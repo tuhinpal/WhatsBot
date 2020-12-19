@@ -55,6 +55,9 @@
 Read the [wiki](https://github.com/TheWhatsBot/WhatsBot/wiki/Deploy-with-Heroku) before Deploy it with Heroku<br><br>
 [Deploy in VPS](https://github.com/TheWhatsBot/WhatsBot/wiki/Deploy-in-VPS)
 
+### Commands :
+*Send <code>!help</code> in Anywhere. Or read this [Command's Wiki](https://github.com/TheWhatsBot/WhatsBot/wiki/Commands "Command's Wiki")*
+
 ### Develop :
 *You can develop your own module for Whatsbot. Check out the [wiki](https://github.com/TheWhatsBot/WhatsBot/wiki/Development), It is very easy if you know Javascript.*
 

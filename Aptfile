@@ -1,5 +1,4 @@
 unzip
 git
-pyhton3
-python
+python-pip
 zip

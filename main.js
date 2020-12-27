@@ -15,6 +15,7 @@ const { exec } = require('child_process');
 const help = require('./modules/help');
 const translator = require('./modules/translator');
 const start = require('./modules/start');
+const ud = require('./modules/ud');
 
 const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
 
@@ -262,6 +263,15 @@ client.on('message_create', async(msg) => {
                 client.sendMessage(msg.to, `*Original (${data.ori_lang}) :* ` + "```" + data.original + "```\n\n" + `*Translation (${data.trans_lang}) :* ` + "```" + data.translated + "```")
             }
 
+        } else if (msg.body.startsWith("!ud ")) { // Urban Dictionary Module
+
+            msg.delete(true)
+            var data = await ud.mainF(msg.body.replace("!ud ", ""))
+            if (data == "error") {
+                client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened while Lookup on Urban Dictionary```")
+            } else {
+                client.sendMessage(msg.to, "*Term:* ```" + data.term + "```\n\n" + "*Definition:* ```" + data.def + "```\n\n" + "*Example:* ```" + data.example + "```")
+            }
         }
     }
 });

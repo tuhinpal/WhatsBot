@@ -7,5 +7,6 @@ module.exports = {
     mongodb_url: process.env.MONGODB_URL || "",
     pmpermit_mutetime: process.env.PMPERMIT_MUTETIME || "1800",
     yt_data_api_key: process.env.YT_DATA_API_KEY || "",
-    default_tr_lang: process.env.DEFAULT_TR_LANG || "en"
+    default_tr_lang: process.env.DEFAULT_TR_LANG || "en",
+    enable_delete_alert: process.env.ENABLE_DELETE_ALERT || "true"
 }

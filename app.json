@@ -34,6 +34,10 @@
         "DEFAULT_TR_LANG": {
             "description": "Default Translation Language",
             "value": "en"
+        },
+        "ENABLE_DELETE_ALERT": {
+            "description": "If true & if someone delete message in PM, Bot will send the deleted message in that chat (Exclude Media)",
+            "value": "true"
         }
     },
     "buildpacks": [

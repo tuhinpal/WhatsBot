@@ -278,7 +278,7 @@ client.on('message_create', async(msg) => {
 
 client.on('message_revoke_everyone', async(after, before) => {
     if (before) {
-        if (before.fromMe !== true && before.hasMedia !== true) {
+        if (before.fromMe !== true && before.hasMedia !== true && before.author == undefined && config.enable_delete_alert == "true") {
             client.sendMessage(before.from, "_You deleted this message_ 👇👇\n\n" + before.body)
         }
     }

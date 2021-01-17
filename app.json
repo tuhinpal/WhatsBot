@@ -42,7 +42,6 @@
     },
     "buildpacks": [
         { "url": "heroku/nodejs" },
-        { "url": "https://buildpack-registry.s3.amazonaws.com/buildpacks/jontewks/puppeteer.tgz" },
-        { "url": "https://github.com/heroku/heroku-buildpack-apt.git" }
+        { "url": "https://buildpack-registry.s3.amazonaws.com/buildpacks/jontewks/puppeteer.tgz" }
     ]
 }

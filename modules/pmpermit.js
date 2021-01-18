@@ -143,7 +143,7 @@ async function handler(id) {
         } else {
             var out = ({
                 mute: false,
-                msg: `*✋ Wait*\n\nPlease wait until I will get back to Online, Kindly don't send another message.`
+                msg: `*✋ Wait You Are Entring Ultra Secure Protocole This Is Mr.Devil Inbox.`
             })
             return out
         }

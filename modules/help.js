@@ -3,7 +3,7 @@ const config = require('../config');
 async function mainF(text) {
 
     if (text == "!help") {
-        return `🔱 *Commands*\n\n⭐ *block* - _!block to execute_\n⭐ *mute* - _!mute to execute_\n⭐ *unmute* - _!unmute to execute_\n⭐ *delete* - _Reply your message with !delete to execute_\n\n🛠 *All Modules*\n\n⭐ *pmpermit* - _Permission for direct message_\n⭐ *term* - _Terminal in Whatsapp_\n⭐ *yt* - _Download Youtube video from link_\n⭐ *weather* - _Lookup today's weather_\n⭐ *carbon* - _Generate beautiful image from text_\n⭐ *jiosaavn* - _Download a song from Jiosaavn Link_\n⭐ *zee5* - _Download a Zee5 content_\n⭐ *qr* - _Generate QR from text_\n⭐ *directlink* - _Get direct link of photos_\n⭐ *tr* - _Translate Text_\n⭐ *ud* - _Urban Dictionary_\n\n*!help [Plugin Name]* - To get more info `
+        return `🔱 *Commands*\n\n⭐ *block* - _!block to execute_\n⭐ *mute* - _!mute to execute_\n⭐ *unmute* - _!unmute to execute_\n⭐ *delete* - _Reply your message with !delete to execute_\n\n🛠 *All Modules*\n\n⭐ *pmpermit* - _Permission for direct message_\n⭐ *term* - _Terminal in Whatsapp_\n⭐ *yt* - _Download Youtube video from link_\n⭐ *weather* - _Lookup today's weather_\n⭐ *carbon* - _Generate beautiful image from text_\n⭐ *jiosaavn* - _Download a song from Jiosaavn Link_\n⭐ *zee5* - _Download a Zee5 content_\n⭐ *qr* - _Generate QR from text_\n⭐ *directlink* - _Get direct link of photos_\n⭐ *tr* - _Translate Text_\n⭐ *ud* - _Urban Dictionary_\n⭐ *sticker* - _Create sticker from Image_\n\n*!help [Plugin Name]* - To get more info `
 
     } else if (text.startsWith("!help ")) {
         var param = text.split(" ")[1]
@@ -28,7 +28,9 @@ async function mainF(text) {
         } else if (param == "tr") {
             return `*Translator*\n\nIt will translate text in different languages.\n\n*!tr [Text]*\nor,\nReply a message with *!tr*\n\nor,\n\n*!tr[Output-Language] [Text]*\nor,\nReply a message with \n*!tr[Output-Language]*\nto translate it`
         } else if (param == "ud") {
-            return `*Urban Dictionary*\n\Urban Dictionary is a crowdsourced online dictionary for slang words and phrases.\n\n*!ud [Word]*\nto search a word using Urban Dictionary`
+            return `*Urban Dictionary*\n\nUrban Dictionary is a crowdsourced online dictionary for slang words and phrases.\n\n*!ud [Word]*\nto search a word using Urban Dictionary`
+        } else if (param == "sticker") {
+            return `*Sticker*\n\nCreate sticker from Image.\n\nReply an image with *!sticker* to get a sticker of that image.`
         } else {
             return `🔱 *Commands*\n\n⭐ *block* - _!block to execute_\n⭐ *mute* - _!mute to execute_\n⭐ *unmute* - _!unmute to execute_\n⭐ *delete* - _Reply your message with !delete to execute_\n\n🛠 *All Modules*\n\n⭐ *pmpermit* - _Permission for direct message_\n⭐ *term* - _Terminal in Whatsapp_\n⭐ *yt* - _Download Youtube video from link_\n⭐ *weather* - _Lookup today's weather_\n⭐ *carbon* - _Generate beautiful image from text_\n⭐ *jiosaavn* - _Download a song from Jiosaavn Link_\n⭐ *zee5* - _Download a Zee5 content_\n⭐ *qr* - _Generate QR from text_\n⭐ *directlink* - _Get direct link of photos_\n⭐ *tr* - _Translate Text_\n⭐ *ud* - _Urban Dictionary_\n\n*!help [Plugin Name]* - To get more info `
         }

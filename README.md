@@ -7,7 +7,7 @@
 <br>
 <p align="center">
 <a href="https://github.com/TheWhatsBot/WhatsBot/releases">
-    <img src="https://shields.io/badge/WHATSBOT-Version--1.0.0-red?logo=whatsapp&style=for-the-badge"
+    <img src="https://shields.io/badge/WHATSBOT-Version--1.2.0-red?logo=whatsapp&style=for-the-badge"
          alt="Version"></a><br>
    <a href="https://github.com/TheWhatsBot/WhatsBot/wiki">
  <img src="https://shields.io/badge/WIKI-red?style=for-the-badge"alt="Wiki"></a>
@@ -48,6 +48,8 @@
 - **qr** - Generate QR from text
 - **directlink** - Get direct link of photos
 - **tr** - Translate Text
+- **ud** - Urban Dictionary
+- **sticker** - Make sticker from Image
 
 
 ### Deploy :
@@ -78,7 +80,7 @@ Read the [wiki](https://github.com/TheWhatsBot/WhatsBot/wiki/Deploy-with-Heroku)
 
 ### License & Copyright :
 - This Project is [Apache-2.0](https://github.com/TheWhatsBot/WhatsBot/blob/main/LICENSE) Licensed
-- Copyright 2020 by [Tuhin Kanti Pal](https://github.com/cachecleanerjeet)
+- Copyright 2021 by [Tuhin Kanti Pal](https://github.com/cachecleanerjeet)
 
 ### Connect :
 - [Channel](https://telegram.dog/tprojects)

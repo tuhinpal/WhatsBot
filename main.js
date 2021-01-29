@@ -272,6 +272,16 @@ client.on('message_create', async(msg) => {
             } else {
                 client.sendMessage(msg.to, "*Term:* ```" + data.term + "```\n\n" + "*Definition:* ```" + data.def + "```\n\n" + "*Example:* ```" + data.example + "```")
             }
+        } else if (msg.body.startsWith("!sticker") && msg.hasQuotedMsg) { // Sticker Module
+
+            msg.delete(true)
+            var quotedMsg = await msg.getQuotedMessage();
+            if (quotedMsg.hasMedia) {
+                var attachmentData = await quotedMsg.downloadMedia();
+                client.sendMessage(msg.to, new MessageMedia(attachmentData.mimetype, attachmentData.data, attachmentData.filename), { sendMediaAsSticker: true });
+            } else {
+                client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```No image found to make a Sticker```")
+            }
         }
     }
 });

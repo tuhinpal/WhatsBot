@@ -3,11 +3,8 @@ const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs');
 
 async function insert(id) {
-
-    var insertdata = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true })
-        .catch(err => { return "insert_error" })
-
     try {
+        var insertdata = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
         await insertdata.db("pmpermit").collection("data").insertOne({ number: id, times: 1, permit: false })
         return "inserted"
 
@@ -20,10 +17,10 @@ async function insert(id) {
 }
 
 async function updateviolant(id, timesvio) { // promise update times data
-    var updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true })
-        .catch(err => { return "update_error" })
 
     try {
+        var updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+
         await updatewrite.db("pmpermit").collection("data").updateOne({ number: id }, { $set: { times: timesvio } })
         return "updated"
 
@@ -35,9 +32,10 @@ async function updateviolant(id, timesvio) { // promise update times data
 }
 
 async function readdb(id) { //Promise read data
-    var mongoread = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true })
-        .catch(err => { return "read_error" })
+
     try {
+        var mongoread = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+
         var result = await mongoread.db("pmpermit").collection("data").find({ number: id }).toArray()
         if (result[0] == undefined) {
             return ({
@@ -60,10 +58,9 @@ async function readdb(id) { //Promise read data
 }
 
 async function permitacton(id) {
-    var updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true })
-        .catch(err => { return "error" })
-
     try {
+        var updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+
         await updatewrite.db("pmpermit").collection("data").updateOne({ number: id }, { $set: { times: 1, permit: true } })
         fs.readFile(__dirname + `/tempdata/${id}.json`, { encoding: 'utf8' },
             async function(err, data) {
@@ -104,10 +101,9 @@ async function permitacton(id) {
     }
 }
 async function nopermitacton(id) {
-    var updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true })
-        .catch(err => { return "error" })
-
     try {
+        var updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+
         await updatewrite.db("pmpermit").collection("data").updateOne({ number: id }, { $set: { times: 1, permit: false } })
         fs.readFile(__dirname + `/tempdata/${id}.json`, { encoding: 'utf8' },
             async function(err, data) {

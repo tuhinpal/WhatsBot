@@ -52,10 +52,10 @@ client.on('message', async msg => {
         }
 
     } else {
-        if (msg.body.includes("!start")) {
+        if (msg.body.includes("!info")) {
 
-            msg.delete(true)
-            client.sendMessage(msg.from, new MessageMedia(start.mimetype, start.data, start.filename), { caption: start.msg })
+            var startdata = await start.get(await client.info.getBatteryStatus(), client.info.phone)
+            client.sendMessage(msg.to, new MessageMedia(startdata.mimetype, startdata.data, startdata.filename), { caption: startdata.msg })
 
         }
     }
@@ -88,7 +88,7 @@ client.on('message_create', async(msg) => {
             var unmuteDate = new Date()
             unmuteDate.setSeconds(Number(unmuteDate.getSeconds()) + Number(config.pmpermit_mutetime));
             await chat.mute(unmuteDate)
-            msg.reply(`You have been muted for ${config.pmpermit_mutetime/60} Minutes`)
+            msg.reply(`You have been muted for ${config.pmpermit_mutetime / 60} Minutes`)
 
         } else if (msg.body == "!unmute" && !msg.to.includes("-")) { // Unmute an user in pm
 
@@ -120,9 +120,9 @@ client.on('message_create', async(msg) => {
             msg.reply("Pong !!!");
 
         } else if (msg.body == "!start") { // Start command
-
             msg.delete(true)
-            client.sendMessage(msg.to, new MessageMedia(start.mimetype, start.data, start.filename), { caption: start.msg })
+            var startdata = await start.get(await client.info.getBatteryStatus(), client.info.phone)
+            client.sendMessage(msg.to, new MessageMedia(startdata.mimetype, startdata.data, startdata.filename), { caption: startdata.msg })
 
         } else if (msg.body == '!delete' && msg.hasQuotedMsg) {
 
@@ -282,6 +282,9 @@ client.on('message_create', async(msg) => {
             } else {
                 client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```No image found to make a Sticker```")
             }
+        } else if (msg.body == "!awake") {
+            client.sendPresenceAvailable()
+            msg.reply("```" + "I will be online from now." + "```")
         }
     }
 });

@@ -7,7 +7,7 @@
 <br>
 <p align="center">
 <a href="https://github.com/TheWhatsBot/WhatsBot/releases">
-    <img src="https://shields.io/badge/WHATSBOT-Version--1.2.0-red?logo=whatsapp&style=for-the-badge"
+    <img src="https://shields.io/badge/WHATSBOT-Version--1.5.0-red?logo=whatsapp&style=for-the-badge"
          alt="Version"></a><br>
    <a href="https://github.com/TheWhatsBot/WhatsBot/wiki">
  <img src="https://shields.io/badge/WIKI-red?style=for-the-badge"alt="Wiki"></a>

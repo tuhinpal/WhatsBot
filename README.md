@@ -83,5 +83,5 @@ Read the [wiki](https://github.com/TheWhatsBot/WhatsBot/wiki/Deploy-with-Heroku)
 - Copyright 2021 by [Tuhin Kanti Pal](https://github.com/cachecleanerjeet)
 
 ### Connect :
-- [Channel](https://telegram.dog/tprojects)
-- [Support Group](https://telegram.dog/t_projects)
+- [Channel](https://telegram.dog/whatsbotnews)
+- [Support Group](https://telegram.dog/whatsbotsupport)

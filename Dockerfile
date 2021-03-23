@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM node:latest
 
 RUN apt-get update \
      && apt-get install -y wget gnupg ca-certificates \
@@ -14,7 +14,6 @@ RUN apt install software-properties-common -y
 RUN add-apt-repository ppa:savoury1/ffmpeg4
 RUN apt update
 RUN apt install ffmpeg -y
-RUN apt install npm -y
 
 WORKDIR /app
 COPY . /app

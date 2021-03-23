@@ -10,6 +10,7 @@
         "whatsapp-userbot",
         "whatsapp"
     ],
+    "stack": "container",
     "env": {
         "SESSION": {
             "description": "Puppeteer Session. Get it by running genToken.js",
@@ -39,9 +40,5 @@
             "description": "If true & if someone delete message in PM, Bot will send the deleted message in that chat (Exclude Media)",
             "value": "true"
         }
-    },
-    "buildpacks": [
-        { "url": "heroku/nodejs" },
-        { "url": "https://buildpack-registry.s3.amazonaws.com/buildpacks/jontewks/puppeteer.tgz" }
-    ]
+    }
 }

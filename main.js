@@ -124,6 +124,59 @@ client.on('message_create', async(msg) => {
             var startdata = await start.get(await client.info.getBatteryStatus(), client.info.phone)
             client.sendMessage(msg.to, new MessageMedia(startdata.mimetype, startdata.data, startdata.filename), { caption: startdata.msg })
 
+        } else if (msg.body.startswith("!spam")) { // Spamming Op in the chat
+
+            if (msg.hasQuotedMsg) {
+                var quotedMsg = await msg.getQuotedMessage();
+                var i;
+                if (quotedMsg.hasMedia) {
+                    var count = 10
+                    var k = msg.body.replace("!spam", "")
+                    if (k.length() > 0)
+                        count = parseInt(k)
+                    if (isNaN(count)) {
+                        client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Invalid count```")
+                        return 0;
+                    }
+                    var media = await quotedMsg.downloadMedia();
+                    for (i=0; i<count; i++)
+                        client.sendMessage(msg.to, new MessageMedia(media.mimetype, media.data, media.filename));
+
+                } else {
+
+                    var count = 10
+                    var k = msg.body.replace("!spam", "")
+                    if (k.length() > 0)
+                        count = parseInt(k)
+                    if (isNaN(count)) {
+                        client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Invalid count```")
+                        return 0;
+                    }
+                    for (i=0; i<count; i++)
+                        client.sendMessage(msg.to, quotedMsg.body)
+                }
+
+            } else {
+
+                var raw_text = msg.body.replace("!spam ", "")
+                var count = 10
+                if (raw_text.includes("|")) {
+                    res = raw_text.split("|")
+                    count = parseInt(res[0])
+                    text = res[1]
+                } else
+                    text = raw_text
+                if (isNaN(count)) {
+                    client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Invalid count```")
+                    return 0;
+                }
+                if (text.length() > 0) {
+                    for(i=0; i<count; i++)
+                        client.sendMessage(msg.to, text);
+                } else
+                    client.sendMessage(msg.to, "Sorry, I didn't found any text to spam");
+            }
+
         } else if (msg.body == '!delete' && msg.hasQuotedMsg) {
 
             msg.delete(true)

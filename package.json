@@ -4,7 +4,8 @@
     "description": "Plugable Userbot for WhatsApp",
     "main": "main.js",
     "scripts": {
-        "start": "node main.js"
+        "start": "node main.js",
+        "gentoken": "node genToken.js"
     },
     "repository": {
         "type": "git",

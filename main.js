@@ -16,6 +16,7 @@ const help = require('./modules/help');
 const translator = require('./modules/translator');
 const start = require('./modules/start');
 const ud = require('./modules/ud');
+const gitinfo = require('./modules/git');
 
 const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
 
@@ -285,6 +286,17 @@ client.on('message_create', async(msg) => {
         } else if (msg.body == "!awake") {
             client.sendPresenceAvailable()
             msg.reply("```" + "I will be online from now." + "```")
+        } else if (msg.body.startsWith('!git ')) { // Gitinfo Module with link
+            msg.delete(true)
+            var data = await gitinfo.detail(msg.body.replace('!git ', ''))
+            if (data.status) {
+                if (data.data.status) {
+                    await client.sendMessage(msg.to, new MessageMedia(data.data.mimetype, data.data.data, data.data.filename))
+                }
+                client.sendMessage(msg.to, data.msg)
+            } else {
+                client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```" + data.msg + "```")
+            }
         }
     }
 });

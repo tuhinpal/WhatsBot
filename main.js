@@ -17,6 +17,8 @@ const translator = require('./modules/translator');
 const start = require('./modules/start');
 const ud = require('./modules/ud');
 const gitinfo = require('./modules/git');
+const cron = require('node-cron');
+const cricket = require('./modules/cricket');
 
 const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
 
@@ -62,7 +64,9 @@ client.on('message', async msg => {
     }
 });
 
-client.on('message_create', async(msg) => {
+const allricketschedules = {} // Will need later
+
+client.on('message_create', async (msg) => {
     if (msg.fromMe) {
         if (msg.body == "!allow" && config.pmpermit_enabled == "true" && !msg.to.includes("-")) { // allow and unmute the chat (PMPermit module)
 
@@ -297,11 +301,46 @@ client.on('message_create', async(msg) => {
             } else {
                 client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```" + data.msg + "```")
             }
+        } else if (msg.body.startsWith('!cricket ')) { // Cricket Module Start
+            msg.delete(true)
+
+            var packed = {
+                url: msg.body.split(' ')[1],
+                interval: Number(msg.body.split(' ')[2]?.replace('m', '').replace('M', '').replace('.', '')) || 1,
+                stoptime: Number(msg.body.split(' ')[3]?.replace('m', '').replace('M', '')) || 10,
+            }
+
+            var task = cron.schedule(`*/${packed.interval} * * * *`, async () => {
+                var fetchscore = await cricket(packed.url)
+                if (fetchscore.status) {
+                    client.sendMessage(msg.to, fetchscore.msg)
+                }
+            })
+
+            if (allricketschedules[msg.to] !== undefined) {
+                let critask = allricketschedules[msg.to];
+                critask.stop();
+                client.sendMessage(msg.to, `Previous cricket updates of this chat has been stopped !`)
+            }
+
+            client.sendMessage(msg.to, `⏱ *Update setted*\n\n_It will now give you cricket update in every ${packed.interval}M and it will stop after ${packed.stoptime}M._`)
+
+            setTimeout(() => {
+                task.stop()
+            }, packed.stoptime * 60 * 1000);
+
+            allricketschedules[msg.to] = task
+
+        } else if (msg.body.startsWith('!cricketstop')) { // Cricket Module stop
+            msg.delete(true)
+            let critask = allricketschedules[msg.to];
+            critask.stop();
+            client.sendMessage(msg.to, `All running cricket updates of this chat has been stopped !`)
         }
     }
 });
 
-client.on('message_revoke_everyone', async(after, before) => {
+client.on('message_revoke_everyone', async (after, before) => {
     if (before) {
         if (before.fromMe !== true && before.hasMedia !== true && before.author == undefined && config.enable_delete_alert == "true") {
             client.sendMessage(before.from, "_You deleted this message_ 👇👇\n\n" + before.body)

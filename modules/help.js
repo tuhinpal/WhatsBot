@@ -2,13 +2,15 @@ const config = require('../config');
 
 async function mainF(text) {
 
+    const commands = `🔱 *Commands*\n\n⭐ *block* - _!block to execute_\n⭐ *mute* - _!mute to execute_\n⭐ *unmute* - _!unmute to execute_\n⭐ *delete* - _Reply your message with !delete to execute_\n\n🛠 *All Modules*\n\n⭐ *pmpermit* - _Permission for direct message_\n⭐ *term* - _Terminal in Whatsapp_\n⭐ *yt* - _Download Youtube video from link_\n⭐ *weather* - _Lookup today's weather_\n⭐ *carbon* - _Generate beautiful image from text_\n⭐ *jiosaavn* - _Download a song from Jiosaavn Link_\n⭐ *zee5* - _Download a Zee5 content_\n⭐ *qr* - _Generate QR from text_\n⭐ *directlink* - _Get direct link of photos_\n⭐ *tr* - _Translate Text_\n⭐ *ud* - _Urban Dictionary_\n⭐ *sticker* - _Create sticker from Image_\n⭐ *git* - _Get a github repository in zip format with it's details_\n⭐ *cricket* - _Get cricket updates_\n\n*!help [Plugin Name]* - To get more info `
+
     if (text == "!help") {
-        return `🔱 *Commands*\n\n⭐ *block* - _!block to execute_\n⭐ *mute* - _!mute to execute_\n⭐ *unmute* - _!unmute to execute_\n⭐ *delete* - _Reply your message with !delete to execute_\n\n🛠 *All Modules*\n\n⭐ *pmpermit* - _Permission for direct message_\n⭐ *term* - _Terminal in Whatsapp_\n⭐ *yt* - _Download Youtube video from link_\n⭐ *weather* - _Lookup today's weather_\n⭐ *carbon* - _Generate beautiful image from text_\n⭐ *jiosaavn* - _Download a song from Jiosaavn Link_\n⭐ *zee5* - _Download a Zee5 content_\n⭐ *qr* - _Generate QR from text_\n⭐ *directlink* - _Get direct link of photos_\n⭐ *tr* - _Translate Text_\n⭐ *ud* - _Urban Dictionary_\n⭐ *sticker* - _Create sticker from Image_\n⭐ *git* - _Get a github repository in zip format with it's details_\n\n*!help [Plugin Name]* - To get more info `
+        return commands
 
     } else if (text.startsWith("!help ")) {
         var param = text.split(" ")[1]
         if (param == "pmpermit") {
-            return `*Pmpermit*\n\nIf an user messaged you, an automated message sent to him. If still he messages you for 3 times he will be muted for ${config.pmpermit_mutetime/60} Minutes.\n\n_You can allow him for pm by these commands_ 👇\n*!allow* - Allow an user for PM\n*!disallow* - Disallow an allowed user for PM`
+            return `*Pmpermit*\n\nIf an user messaged you, an automated message sent to him. If still he messages you for 3 times he will be muted for ${config.pmpermit_mutetime / 60} Minutes.\n\n_You can allow him for pm by these commands_ 👇\n*!allow* - Allow an user for PM\n*!disallow* - Disallow an allowed user for PM`
         } else if (param == "term") {
             return `*Terminal*\n\nYou can execute any command with this. By default it will run from _public_ directory. If you are leeching something it will be available publicly at\n_http://[Your-App-Url]/public_\n\n*!term [command]*\nTo execute a command`
         } else if (param == "weather") {
@@ -33,8 +35,10 @@ async function mainF(text) {
             return `*Sticker*\n\nCreate sticker from Image.\n\nReply an image with *!sticker* to get a sticker of that image.`
         } else if (param == "git") {
             return `*Github*\n\nGet a github repository in zip format with it's details.\n\nSend a message with *!git [Github-Url]* to execute.`
+        } else if (param == "cricket") {
+            return `*Cricket*\n\nGet cricket updates in a schedule.\n\nSend a message with\n*!cricket [Cribuzz-Url] [Interval-Time]m [Stop-Time]m* to execute.\n\n*Example:* If you want to get updates in every 2 minutes for 15 minutes then the command will be:\n\n!cricket https://www.cricbuzz.com/xyz 2m 15m\n\nTo stop updates before your stop time execute !cricketstop\n\nYou can set only one cricket update in a single chat (Group / Brodcast / Private)`
         } else {
-            return `🔱 *Commands*\n\n⭐ *block* - _!block to execute_\n⭐ *mute* - _!mute to execute_\n⭐ *unmute* - _!unmute to execute_\n⭐ *delete* - _Reply your message with !delete to execute_\n\n🛠 *All Modules*\n\n⭐ *pmpermit* - _Permission for direct message_\n⭐ *term* - _Terminal in Whatsapp_\n⭐ *yt* - _Download Youtube video from link_\n⭐ *weather* - _Lookup today's weather_\n⭐ *carbon* - _Generate beautiful image from text_\n⭐ *jiosaavn* - _Download a song from Jiosaavn Link_\n⭐ *zee5* - _Download a Zee5 content_\n⭐ *qr* - _Generate QR from text_\n⭐ *directlink* - _Get direct link of photos_\n⭐ *tr* - _Translate Text_\n⭐ *ud* - _Urban Dictionary_\n\n*!help [Plugin Name]* - To get more info `
+            return commands
         }
     }
 }

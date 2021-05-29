@@ -1,10 +1,12 @@
-<h1 align="center">
+<!-- <h1 align="center">
   <a href="https://github.com/TheWhatsBot/WhatsBot"><img src="https://telegra.ph/file/96ccad5945c18944c5f15.png" alt="whatsbot" width="290"></a>
   <br>
 <b>Whatsbot</b>
 </h1>
-<h4 align="center">Moduler Userbot for Whatsapp</h4>
-<br>
+<h4 align="center">Moduler Userbot for Whatsapp</h4> -->
+
+![WhatsBot](https://socialify.git.ci/TheWhatsBot/WhatsBot/image?description=1&font=Source%20Code%20Pro&forks=1&language=1&owner=1&pattern=Floating%20Cogs&stargazers=1&theme=Dark) <br>
+
 <p align="center">
 <a href="https://github.com/TheWhatsBot/WhatsBot/releases">
     <img src="https://shields.io/badge/WHATSBOT-Version--1.5.0-red?logo=whatsapp&style=for-the-badge"

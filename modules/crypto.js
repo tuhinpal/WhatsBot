@@ -11,11 +11,11 @@ async function getPrice(cryptoCode) {
         .then(async function (response) {
             var data = response.data
             var cryptoCodeINR = cryptoCode + "INR"
-            if (data.cryptoCode != undefined || data.cryptoCodeINR != undefined) {
-                cryptoCode = data.cryptoCode == undefined ? cryptoCodeINR : cryptoCode
+            if (data[cryptoCode] != undefined || data[cryptoCodeINR] != undefined) {
+                cryptoCode = data[cryptoCode] == undefined ? cryptoCodeINR : cryptoCode
                 var out = ({
                     name: cryptoCode,
-                    price: data.cryptoCode
+                    price: data[cryptoCode]
                 })
                 return out
             } else {

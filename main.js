@@ -19,6 +19,7 @@ const ud = require('./modules/ud');
 const gitinfo = require('./modules/git');
 const cron = require('node-cron');
 const cricket = require('./modules/cricket');
+const crypto = require('./modules/crypto');
 
 const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
 
@@ -336,7 +337,8 @@ client.on('message_create', async (msg) => {
             let critask = allricketschedules[msg.to];
             critask.stop();
             client.sendMessage(msg.to, `All running cricket updates of this chat has been stopped !`)
-        } else if (msg.body.startsWith("!spam ")) { // Spamming Op in the chat
+        } 
+        else if (msg.body.startsWith("!spam ")) { // Spamming Op in the chat
             msg.delete(true)
             var i, count
             if (msg.hasQuotedMsg) {
@@ -386,6 +388,20 @@ client.on('message_create', async (msg) => {
                 for(i=0; i<count; i++)
                     client.sendMessage(msg.to, text)                 
             }         
+        }
+        else if (msg.body.startsWith("!crypto ")) {
+            msg.delete(true)
+            var data = await crypto.getPrice(msg.body.replace("!crypto ", ""));
+            if (data == "error") {
+                client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something unexpected happened while fetching Cryptocurrency Price```")
+            }
+            if (data == "unsupported") {
+                client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Support for this CryptoCurrency is not yet added```")
+            } 
+            else {
+                var date = new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})
+                client.sendMessage(msg.to, `Price of *${data.name}* as of ${date} is *₹ ${data.price}*`);
+            }
         }
     }
 });

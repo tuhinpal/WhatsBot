@@ -54,6 +54,7 @@
 - **tr** - Translate Text
 - **ud** - Urban Dictionary
 - **sticker** - Make sticker from Image
+- **crypto** - Fetch Latest Price of a CryptoCurrency
 
 ### Deploy :
 

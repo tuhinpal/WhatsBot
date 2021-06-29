@@ -21,6 +21,7 @@ const cron = require('node-cron');
 const cricket = require('./modules/cricket');
 const crypto = require('./modules/crypto');
 const watch = require('./modules/watch');
+const shorten = require('./modules/urlshortner')
 
 const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
 
@@ -418,6 +419,29 @@ client.on('message_create', async (msg) => {
             }
 
         }
+        else if (msg.body.startsWith("!shorten ")) { // URL Shortener Module
+            msg.delete(true)
+            var data = await shorten.getShortURL(msg.body.replace("!shorten ", ""));
+            if (data == "error") {
+                client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Please make sure the entered URL is in correct format.```")
+            }
+            else {
+                client.sendMessage(msg.to, `Short URL for ${data.input} is 👇\n${data.short}`)
+            }
+        }
+        else if (msg.body.startsWith("!shorten") && msg.hasQuotedMsg) { // URL Shortener Module Reply
+
+            msg.delete(true)
+            var quotedMsg = await msg.getQuotedMessage();
+            var data = await shorten.getShortURL(quotedMsg.body);
+            if (data == "error") {
+                client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Please make sure the entered URL is in correct format.```")
+            }
+            else {
+                client.sendMessage(msg.to, `Short URL for ${data.input} is 👇\n${data.short}`)
+            }
+
+        } 
     }
 });
 

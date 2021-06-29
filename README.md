@@ -55,6 +55,7 @@
 - **ud** - Urban Dictionary
 - **sticker** - Make sticker from Image
 - **crypto** - Fetch Latest Price of a CryptoCurrency
+- **watch** - Find out where to watch a Movie/Show
 
 ### Deploy :
 

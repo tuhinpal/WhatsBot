@@ -20,6 +20,7 @@ const gitinfo = require('./modules/git');
 const cron = require('node-cron');
 const cricket = require('./modules/cricket');
 const crypto = require('./modules/crypto');
+const watch = require('./modules/watch');
 
 const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
 
@@ -402,6 +403,20 @@ client.on('message_create', async (msg) => {
                 var date = new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})
                 client.sendMessage(msg.to, `Price of *${data.name}* as of ${date} is *₹ ${data.price}*`);
             }
+        }
+        else if (msg.body.startsWith("!watch ")) { // Watch Module
+            msg.delete(true)
+            var data = await watch.getDetails(msg.body.replace("!watch ", ""));
+            if (data == "error") {
+                client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened while fetching Movie/TV Show Details.```")
+            }
+            else if(data == "No Results"){
+                client.sendMessage(msg.to, `🙇‍♂️ *No Results Found!*\n\n` + "```Please check the name of Movie/TV Show you have entered.```")
+            } 
+            else {
+                client.sendMessage(msg.to, new MessageMedia(data.mimetype, data.thumbdata, data.filename), { caption: data.caption });
+            }
+
         }
     }
 });

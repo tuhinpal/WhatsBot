@@ -57,6 +57,7 @@
 - **crypto** - Fetch Latest Price of a CryptoCurrency
 - **watch** - Find out where to watch a Movie/Show
 - **shorten** - Get Short URL
+- **ocr** - Extract Text from Image
 
 ### Deploy :
 

@@ -21,14 +21,15 @@ const cron = require('node-cron');
 const cricket = require('./modules/cricket');
 const crypto = require('./modules/crypto');
 const watch = require('./modules/watch');
-const shorten = require('./modules/urlshortner')
+const shorten = require('./modules/urlshortner');
+const ocr = require('./modules/ocr');
 
 const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
 
 client.initialize();
 
 client.on('auth_failure', msg => {
-    console.error("There is a problem to authenticate, Kindly set the env var again and restart the app");
+    console.error("There is a problem in authentication, Kindly set the env var again and restart the app");
 });
 
 client.on('ready', () => {
@@ -441,7 +442,19 @@ client.on('message_create', async (msg) => {
                 client.sendMessage(msg.to, `Short URL for ${data.input} is 👇\n${data.short}`)
             }
 
-        } 
+        } else if (msg.body.startsWith("!ocr") && msg.hasQuotedMsg) { // OCR Module
+
+            msg.delete(true)
+            var quotedMsg = await msg.getQuotedMessage();
+            var attachmentData = await quotedMsg.downloadMedia();
+            var data = await ocr.readImage(attachmentData);
+            if (data == "error") {
+                quotedMsg.reply(`Error occured while reading the image. Please make sure the image is clear.`)
+            } else {
+                quotedMsg.reply(`*Extracted Text from the Image*  👇\n\n${data.parsedText}`)
+            }
+
+        }
     }
 });
 

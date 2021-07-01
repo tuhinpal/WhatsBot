@@ -447,7 +447,7 @@ client.on('message_create', async (msg) => {
             msg.delete(true)
             var quotedMsg = await msg.getQuotedMessage();
             var attachmentData = await quotedMsg.downloadMedia();
-            var data = await ocr.read(attachmentData);
+            var data = await ocr.readImage(attachmentData);
             if (data == "error") {
                 quotedMsg.reply(`Error occured while reading the image. Please make sure the image is clear.`)
             } else {

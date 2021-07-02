@@ -23,6 +23,7 @@ const crypto = require('./modules/crypto');
 const watch = require('./modules/watch');
 const shorten = require('./modules/urlshortner');
 const ocr = require('./modules/ocr');
+const emailVerifier = require('./modules/emailverifier');
 
 const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
 
@@ -340,7 +341,7 @@ client.on('message_create', async (msg) => {
             let critask = allricketschedules[msg.to];
             critask.stop();
             client.sendMessage(msg.to, `All running cricket updates of this chat has been stopped !`)
-        } 
+        }
         else if (msg.body.startsWith("!spam ")) { // Spamming Op in the chat
             msg.delete(true)
             var i, count
@@ -362,10 +363,10 @@ client.on('message_create', async (msg) => {
                     sticker = false
                     if (quotedMsg.type == "sticker")
                         sticker = true
-                    for (i=0; i<count; i++)
-                        client.sendMessage(msg.to, new MessageMedia(media.mimetype, media.data, media.filename), {sendMediaAsSticker: sticker});
+                    for (i = 0; i < count; i++)
+                        client.sendMessage(msg.to, new MessageMedia(media.mimetype, media.data, media.filename), { sendMediaAsSticker: sticker });
                 } else {
-                    for (i=0; i<count; i++)
+                    for (i = 0; i < count; i++)
                         client.sendMessage(msg.to, quotedMsg.body)
                 }
             } else {
@@ -388,9 +389,9 @@ client.on('message_create', async (msg) => {
                     client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Count can't be zero.```")
                     return 0
                 }
-                for(i=0; i<count; i++)
-                    client.sendMessage(msg.to, text)                 
-            }         
+                for (i = 0; i < count; i++)
+                    client.sendMessage(msg.to, text)
+            }
         }
         else if (msg.body.startsWith("!crypto ")) {
             msg.delete(true)
@@ -400,9 +401,9 @@ client.on('message_create', async (msg) => {
             }
             if (data == "unsupported") {
                 client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Support for this CryptoCurrency is not yet added```")
-            } 
+            }
             else {
-                var date = new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})
+                var date = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })
                 client.sendMessage(msg.to, `Price of *${data.name}* as of ${date} is *₹ ${data.price}*`);
             }
         }
@@ -412,9 +413,9 @@ client.on('message_create', async (msg) => {
             if (data == "error") {
                 client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened while fetching Movie/TV Show Details.```")
             }
-            else if(data == "No Results"){
+            else if (data == "No Results") {
                 client.sendMessage(msg.to, `🙇‍♂️ *No Results Found!*\n\n` + "```Please check the name of Movie/TV Show you have entered.```")
-            } 
+            }
             else {
                 client.sendMessage(msg.to, new MessageMedia(data.mimetype, data.thumbdata, data.filename), { caption: data.caption });
             }
@@ -453,7 +454,15 @@ client.on('message_create', async (msg) => {
             } else {
                 quotedMsg.reply(`*Extracted Text from the Image*  👇\n\n${data.parsedText}`)
             }
-
+        } else if (msg.body.startsWith("!emailverifier") && msg.hasQuotedMsg) { // Email Verifier Module Reply
+            msg.delete(true)
+            var quotedMsg = await msg.getQuotedMessage();
+            var getdata = await emailVerifier(quotedMsg.body)
+            quotedMsg.reply(getdata)
+        } else if (msg.body.startsWith("!emailverifier ")) { // Email Verifier Module
+            msg.delete(true)
+            var getdata = await emailVerifier(msg.body.replace('!emailverifier ', ''))
+            client.sendMessage(msg.to, getdata);
         }
     }
 });

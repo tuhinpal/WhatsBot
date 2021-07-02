@@ -43,6 +43,10 @@
     "OCR_SPACE_API_KEY": {
       "description": "Get it from https://ocr.space/OCRAPI",
       "value": ""
+    },
+    "INFOSPACE_API_KEY": {
+      "description": "Get it from https://infospace.club",
+      "value": ""
     }
   }
 }

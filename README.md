@@ -9,7 +9,7 @@
 
 <p align="center">
 <a href="https://github.com/TheWhatsBot/WhatsBot/releases">
-    <img src="https://shields.io/badge/WHATSBOT-Version--1.5.0-red?logo=whatsapp&style=for-the-badge"
+    <img src="https://shields.io/badge/WHATSBOT-Version--1.6.0-red?logo=whatsapp&style=for-the-badge"
          alt="Version"></a><br>
    <a href="https://github.com/TheWhatsBot/WhatsBot/wiki">
  <img src="https://shields.io/badge/WIKI-red?style=for-the-badge"alt="Wiki"></a>
@@ -23,8 +23,8 @@
  <img src="https://shields.io/badge/Inspiration-red?style=for-the-badge"alt="Inspiration"></a>
    <a href="#develop-">
  <img src="https://shields.io/badge/Develop-red?style=for-the-badge"alt="Develop"></a><br>
-    <a href="https://github.com/cachecleanerjeet">
-<img src="https://shields.io/badge/MADE WITH ♥ BY-TUHIN-red?style=for-the-badge"alt="Deploy"></a>
+    <a href="#contributors-">
+<img src="https://shields.io/badge/Whatsbot-Contributors-red?style=for-the-badge"alt="Contributors"></a>
 </p>
 
 <br>
@@ -76,7 +76,7 @@ _You can develop your own module for Whatsbot. Check out the [wiki](https://gith
 
 ### How it works :
 
-- Opened whatsapp web in server using puppeteer
+- Open whatsapp web in server using puppeteer
 - Listen messages and take action.
 
 ### Inspiration :
@@ -92,6 +92,14 @@ _You can develop your own module for Whatsbot. Check out the [wiki](https://gith
 - [savefrom.net](https://savefrom.net/ "savefrom[dot]net") - For Youtube Module
 - [Weather API](https://github.com/cachecleanerjeet/weather-api "Weather API") - For Weather Module
 - [Cribuzz API](https://github.com/mskian/cricket-api "Cribuzz API") - Thanks to [mskian](https://github.com/mskian) for his great Cribuzz API
+
+### Contributors :
+
+Whatsbot is fully depended on it's community, Feel free to open a PR if you added a new feature. Thanks to these Great Developers for contributing.
+
+<a href="https://github.com/thewhatsbot/whatsbot/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=thewhatsbot/whatsbot" />
+</a>
 
 ### License & Copyright :
 

@@ -1,4 +1,4 @@
-FROM buildkite/puppeteer:latest
+FROM errorshivansh/WhatsBot:latest
 
 RUN apt update
 RUN apt install ffmpeg -y

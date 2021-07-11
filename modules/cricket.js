@@ -21,4 +21,4 @@ async function cricket(url) {
     }
 }
 
-module.exports = cricket
+module.exports = cricket 

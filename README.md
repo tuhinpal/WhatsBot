@@ -12,19 +12,19 @@
     <img src="https://shields.io/badge/WHATSBOT-Version--1.6.0-red?logo=whatsapp&style=for-the-badge"
          alt="Version"></a><br>
    <a href="https://github.com/TheWhatsBot/WhatsBot/wiki">
- <img src="https://shields.io/badge/WIKI-red?style=for-the-badge"alt="Wiki"></a>
+ <img src="https://shields.io/badge/WIKI-red?style=for-the-badge" alt="Wiki"></a>
   <a href="https://github.com/TheWhatsBot/WhatsBot/wiki/Demo">
- <img src="https://shields.io/badge/DEMO-red?style=for-the-badge"alt="Demo"></a>
+ <img src="https://shields.io/badge/DEMO-red?style=for-the-badge" alt="Demo"></a>
     <a href="#deploy-">
-<img src="https://shields.io/badge/DEPLOY-red?style=for-the-badge"alt="Deploy"></a>
+<img src="https://shields.io/badge/DEPLOY-red?style=for-the-badge" alt="Deploy"></a>
     <a href="#credits-">
-<img src="https://shields.io/badge/Credits-red?style=for-the-badge"alt="Credits"></a>
+<img src="https://shields.io/badge/Credits-red?style=for-the-badge" alt="Credits"></a>
    <a href="#inspiration-">
- <img src="https://shields.io/badge/Inspiration-red?style=for-the-badge"alt="Inspiration"></a>
+ <img src="https://shields.io/badge/Inspiration-red?style=for-the-badge" alt="Inspiration"></a>
    <a href="#develop-">
- <img src="https://shields.io/badge/Develop-red?style=for-the-badge"alt="Develop"></a><br>
+ <img src="https://shields.io/badge/Develop-red?style=for-the-badge" alt="Develop"></a><br>
     <a href="#contributors-">
-<img src="https://shields.io/badge/Whatsbot-Contributors-red?style=for-the-badge"alt="Contributors"></a>
+<img src="https://shields.io/badge/Whatsbot-Contributors-red?style=for-the-badge" alt="Contributors"></a>
 </p>
 
 <br>

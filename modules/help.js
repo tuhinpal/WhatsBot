@@ -2,7 +2,7 @@ const config = require('../config');
 
 async function mainF(text) {
 
-    const commands = `🔱 *Commands*\n\n⭐ *block* - _!block to execute_\n⭐ *mute* - _!mute to execute_\n⭐ *unmute* - _!unmute to execute_\n⭐ *delete* - _Reply your message with !delete to execute_\n\n🛠 *All Modules*\n\n⭐ *pmpermit* - _Permission for direct message_\n⭐ *term* - _Terminal in Whatsapp_\n⭐ *yt* - _Download Youtube video from link_\n⭐ *weather* - _Lookup today's weather_\n⭐ *carbon* - _Generate beautiful image from text_\n⭐ *jiosaavn* - _Download a song from Jiosaavn Link_\n⭐ *zee5* - _Download a Zee5 content_\n⭐ *qr* - _Generate QR from text_\n⭐ *directlink* - _Get direct link of photos_\n⭐ *tr* - _Translate Text_\n⭐ *ud* - _Urban Dictionary_\n⭐ *sticker* - _Create sticker from Image_\n⭐ *git* - _Get a github repository in zip format with it's details_\n⭐ *cricket* - _Get cricket updates_\n⭐ *spam* - _Spam Messages_\n⭐ *crypto* - _Get current cryptocurrency price_\n⭐ *watch* - _Find out where to watch a Movie/Show._\n⭐ *shorten* - _Create Short URL._\n⭐ *ocr* - _Reads text from image._\n⭐ *emailverifier* - _Test an email's validity._\n\n*!help [Plugin Name]* - To get more info `
+    const commands = `🔱 *Commands*\n\n⭐ *block* - _!block to execute_\n⭐ *mute* - _!mute to execute_\n⭐ *unmute* - _!unmute to execute_\n⭐ *delete* - _Reply your message with !delete to execute_\n\n🛠 *All Modules*\n\n⭐ *pmpermit* - _Permission for direct message_\n⭐ *term* - _Terminal in Whatsapp_\n⭐ *yt* - _Download Youtube video from link_\n⭐ *weather* - _Lookup today's weather_\n⭐ *carbon* - _Generate beautiful image from text_\n⭐ *jiosaavn* - _Download a song from Jiosaavn Link_\n⭐ *zee5* - _Download a Zee5 content_\n⭐ *qr* - _Generate QR from text_\n⭐ *directlink* - _Get direct link of photos_\n⭐ *tr* - _Translate Text_\n⭐ *ud* - _Urban Dictionary_\n⭐ *sticker* - _Create sticker from Image_\n⭐ *git* - _Get a github repository in zip format with it's details_\n⭐ *cricket* - _Get cricket updates_\n⭐ *spam* - _Spam Messages_\n⭐ *crypto* - _Get current cryptocurrency price_\n⭐ *watch* - _Find out where to watch a Movie/Show._\n⭐ *shorten* - _Create Short URL._\n⭐ *ocr* - _Reads text from image._\n⭐ *emailverifier* - _Test an email's validity._\n⭐ *song* - _Search a song and download it_\n\n*!help [Plugin Name]* - To get more info `
 
     if (text == "!help") {
         return commands
@@ -49,6 +49,8 @@ async function mainF(text) {
             return `*OCR*\n\nReads text from any readable image. \n\n*Reply a photo with !ocr to read text from that image.*\n`
         } else if (param == "emailverifier") {
             return `*Email Verifier*\n\nTest an Email's validity before it bounce. \n\n*Reply an email with !emailverifier*\nor,\n*!emailverifier [Email Address]*\n\n⚡ Powered by infospace.club`
+        } else if (param == "song") {
+            return `*Song*\n\nSearch a song and download it. \n\n*!song [search-query]*\nEx: !song makhna\n\nThen replay the message with *!dldsong [id]*\nEx. !dldsong 1\n\n⚡ Powered by musicder.net`
         } else {
             return commands
         }

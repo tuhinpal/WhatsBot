@@ -1,0 +1,18 @@
+else if (msg.body.startsWith("!test") && msg.hasQuotedMsg) { // getting message from quote when user do a !test command
+
+var quotedMsg = await msg.getQuotedMessage()
+var quotedmessagetext = quotedMsg.body
+client.sendMessage(msg.to, "test") // send a message
+
+quotedMsg.reply("test") // Quoted msg reply
+
+msg.reply("test") // Client's msg reply
+
+
+} else if (msg.body.startsWith("!test ")) { //Listening a message startswith !test
+
+var msgtext = msg.body
+
+client.sendMessage(msg.to, new MessageMedia("image/png", "base64 encoded data", "filename.jpg"), { caption:  "hello"}); //send a photo
+
+}

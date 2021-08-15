@@ -3,7 +3,6 @@ const app = express();
 const { Client, MessageMedia } = require('whatsapp-web.js');
 const config = require('./config')
 const qr = require('./modules/qr');
-const zee = require('./modules/zee5');
 const saavn = require('./modules/jiosaavn');
 const pmpermit = require('./modules/pmpermit');
 const carbon = require('./modules/carbon');
@@ -159,17 +158,7 @@ client.on('message_create', async (msg) => {
             var data = await qr.qrgen(quotedMsg.body);
             client.sendMessage(msg.to, new MessageMedia(data.mimetype, data.data, data.filename), { caption: `QR code for 👇\n` + "```" + quotedMsg.body + "```" });
 
-        } else if (msg.body.startsWith("!zee5 ")) { // Zee5 Module
-
-            msg.delete(true)
-            var data = await zee.mainF(msg.body.replace("!zee5 ", ""));
-            if (data == "error") {
-                client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened to fetch this Zee5 Content, Maybe it's a wrong url.```")
-            } else {
-                client.sendMessage(msg.to, new MessageMedia(data.image.mimetype, data.image.data, data.image.filename), { caption: `🎥 *${data.title}* _(${data.genre})_\n\n📄 ` + "```" + data.description + "```" + `\n\n*Stream Url* 👇\n${data.url}` });
-            }
-
-        } else if (msg.body.startsWith("!jiosaavn ")) { // Jiosaavn Module
+        }  else if (msg.body.startsWith("!jiosaavn ")) { // Jiosaavn Module
 
             msg.delete(true)
             var data = await saavn.mainF(msg.body.replace("!jiosaavn ", ""));

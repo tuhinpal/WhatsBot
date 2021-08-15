@@ -47,8 +47,7 @@
 - **yt** - Download Youtube video from link
 - **weather** - Lookup today's weather
 - **carbon** - Generate beautiful image from text
-- **jiosaavn** - Download a song from Jiosaavn Link
-- **zee5** - Download a Zee5 content
+- **sing** - Download a song by search
 - **qr** - Generate QR from text
 - **directlink** - Get direct link of photos
 - **tr** - Translate Text
@@ -58,6 +57,8 @@
 - **watch** - Find out where to watch a Movie/Show
 - **shorten** - Get Short URL
 - **ocr** - Extract Text from Image
+
+[More modules]("https://github.com/TheWhatsBot/WhatsBot/wiki/Commands")
 
 ### Deploy :
 

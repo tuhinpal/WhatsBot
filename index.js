@@ -33,11 +33,11 @@ client.on('message_create', async msg => {
         let command = args.shift().toLowerCase();
 
         if (availableCommands.has(command)) {
-            require(`./commands/${command}`).run(client, msg, args);
+            await require(`./commands/${command}`).run(client, msg, args);
         }
 
         else {
-            client.sendMessage(msg.to,'No such command found');
+            await client.sendMessage(msg.to,'No such command found');
         }
     }
 });

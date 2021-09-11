@@ -24,7 +24,7 @@ async function get(battery, phn_info) {
 const execute = async (client,msg) => {
     msg.delete(true);
     let startdata = await get(await client.info.getBatteryStatus(), client.info.phone);
-    client.sendMessage(msg.to, new MessageMedia(startdata.mimetype, startdata.data, startdata.filename), { caption: startdata.msg });
+    await client.sendMessage(msg.to, new MessageMedia(startdata.mimetype, startdata.data, startdata.filename), { caption: startdata.msg });
 };
 
 module.exports = {execute};

@@ -16,13 +16,24 @@ async function carbon(text) {
 }
 
 const execute = async (client,msg) => {
+    let data;
+
     msg.delete(true);
-    let data = await carbon(msg.body.replace("!carbon ", ""));
-    if (data == "error") {
-        client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened to create the Carbon.```");
-    } else {
-        client.sendMessage(msg.to, new MessageMedia(data.mimetype, data.data, data.filename), { caption: `Carbon for 👇\n` + "```" + msg.body.replace("!carbon ", "") + "```" });
+    if( msg.hasQuotedMsg){
+        let quotedMsg = await msg.getQuotedMessage();
+        data = await carbon(quotedMsg.body);
+        msg = quotedMsg;
     }
+    else {
+        data = await carbon(msg.body.replace("!carbon ", ""));
+    }
+
+    if (data == "error") {
+        await client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened to create the Carbon.```");
+    } else {
+        await client.sendMessage(msg.to, new MessageMedia(data.mimetype, data.data, data.filename), { caption: `Carbon for 👇\n` + "```" + msg.body.replace("!carbon ", "") + "```" });
+    }
+
 };
 
 

@@ -29,7 +29,7 @@ client.on('ready', () => {
 
 client.on('message_create', async msg => {
     if(msg.fromMe && msg.body.startsWith('!')) {
-        let args = message.body.slice(1).trim().split(/ +/g);
+        let args = msg.body.slice(1).trim().split(/ +/g);
         let command = args.shift().toLowerCase();
 
         if (availableCommands.has(command)) {

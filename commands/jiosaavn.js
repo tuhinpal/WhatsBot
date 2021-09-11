@@ -37,7 +37,7 @@ async function saavn(url) {
         });
 }
 
-const run = async (client,msg) => {
+const execute = async (client,msg) => {
     let data;
 
     if(msg.hasQuotedMsg) {
@@ -58,4 +58,4 @@ const run = async (client,msg) => {
 };
 
 
-module.exports = {run};
+module.exports = {execute};

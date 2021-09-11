@@ -2,7 +2,7 @@
 
 const { exec } = require('child_process');
 
-const run = (client,msg) => {
+const execute = (client,msg) => {
     msg.delete(true);
     exec("cd public && " + msg.body.replace("!term ", ""), (error, stdout, stderr) => {
         if (error) {
@@ -15,4 +15,4 @@ const run = (client,msg) => {
     });
 };
 
-module.exports = {run};
+module.exports = {execute};

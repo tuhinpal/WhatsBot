@@ -29,11 +29,10 @@ client.on('ready', () => {
 
 client.on('message_create', async msg => {
     if(msg.fromMe && msg.body.startsWith('!')) {
-        let args = msg.body.slice(1).trim().split(/ +/g);
-        let command = args.shift().toLowerCase();
+        let command = msg.body.slice(1).trim().split(/ +/g).shift().toLowerCase();
 
         if (availableCommands.has(command)) {
-            await require(`./commands/${command}`).run(client, msg, args);
+            await require(`./commands/${command}`).execute(client, msg);
         }
 
         else {

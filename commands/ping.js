@@ -1,5 +1,5 @@
 //jshint esversion:6
 
-const run = (client,msg) => msg.reply('pong');
+const execute = (client,msg) => msg.reply('pong');
 
-module.exports = {run};
+module.exports = {execute};

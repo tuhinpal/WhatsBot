@@ -1,6 +1,6 @@
 //jshint esversion:8
 
-const run = async (client,msg) => {
+const execute = async (client,msg) => {
     if(msg.hasQuotedMsg) {
         msg.delete(true);
         let quotedMsg = await msg.getQuotedMessage();
@@ -14,4 +14,4 @@ const run = async (client,msg) => {
     }
 };
 
-module.exports = {run};
+module.exports = {execute};

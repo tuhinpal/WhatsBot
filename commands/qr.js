@@ -13,17 +13,20 @@ async function qrgen(text) {
 }
 
 const run = async (client,msg) => {
+
+    let data;
+    msg.delete(true);
+
     if(msg.hasQuotedMsg) {
-        msg.delete(true);
         let quotedMsg = await msg.getQuotedMessage();
-        let data = await qrgen(quotedMsg.body);
-        client.sendMessage(msg.to, new MessageMedia(data.mimetype, data.data, data.filename), { caption: `QR code for 👇\n` + "```" + quotedMsg.body + "```" });
+        data = await qrgen(quotedMsg.body);
+        msg = quotedMsg;
     }
     else {
-        msg.delete(true);
-        let data = await qrgen(msg.body.replace("!qr ", ""));
-        client.sendMessage(msg.to, new MessageMedia(data.mimetype, data.data, data.filename), { caption: `QR code for 👇\n` + "```" + msg.body.replace("!qr ", "") + "```" });
+        data = await qrgen(msg.body.replace("!qr ", ""));
     }
+    
+    client.sendMessage(msg.to, new MessageMedia(data.mimetype, data.data, data.filename), { caption: `QR code for 👇\n` + "```" + msg.body + "```" });
 };
 
 module.exports = {run};

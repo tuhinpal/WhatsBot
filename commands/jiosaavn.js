@@ -4,7 +4,7 @@ const axios = require('axios');
 const downloadserverurl = "https://mder.pages.dev/download/";
 
 async function imageencode(link) {
-    var respoimage = await axios.get(link, { responseType: 'arraybuffer' });
+    let respoimage = await axios.get(link, { responseType: 'arraybuffer' });
 
     return ({
         mimetype: "image/jpeg",
@@ -38,25 +38,22 @@ async function saavn(url) {
 }
 
 const run = async (client,msg) => {
+    let data;
+
     if(msg.hasQuotedMsg) {
-        msg.delete(true);
-        var quotedMsg = await msg.getQuotedMessage();
-        var data = await saavn(quotedMsg.body);
-        if (data == "error") {
-            client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened to fetch this Jiosaavn Link, Maybe it's a wrong url.```");
-        } 
-        else {
-            client.sendMessage(msg.to, new MessageMedia(data.image.mimetype, data.image.data, data.image.filename), { caption: `🎶 *${data.title}* _(${data.released_year})_\n\n📀 *Artist :*  ` + "```" + data.singers + "```\n📚 *Album :*  " + "```" + data.album + "```" + `\n\n*Download Url* 👇\n${data.url}` });
-        }
+        let quotedMsg = await msg.getQuotedMessage();
+        data = await saavn(quotedMsg.body);
     }
     else {
-        msg.delete(true);
-        let data = await saavn(msg.body.replace("!jiosaavn ", ""));
-        if (data == "error") {
-            client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened to fetch this Jiosaavn Link, Maybe it's a wrong url.```");
-        } else {
-            client.sendMessage(msg.to, new MessageMedia(data.image.mimetype, data.image.data, data.image.filename), { caption: `🎶 *${data.title}* _(${data.released_year})_\n\n📀 *Artist :*  ` + "```" + data.singers + "```\n📚 *Album :*  " + "```" + data.album + "```" + `\n\n*Download Url* 👇\n${data.url}` });
-        }
+        data = await saavn(msg.body.replace("!jiosaavn ", ""));
+    }
+
+    msg.delete(true);
+    if (data == "error") {
+        client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened to fetch this Jiosaavn Link, Maybe it's a wrong url.```");
+    } 
+    else {
+        client.sendMessage(msg.to, new MessageMedia(data.image.mimetype, data.image.data, data.image.filename), { caption: `🎶 *${data.title}* _(${data.released_year})_\n\n📀 *Artist :*  ` + "```" + data.singers + "```\n📚 *Album :*  " + "```" + data.album + "```" + `\n\n*Download Url* 👇\n${data.url}` });
     }
 };
 

@@ -12,7 +12,7 @@ async function qrgen(text) {
     return data;
 }
 
-const execute = async (client,msg) => {
+const execute = async (client,msg,args) => {
 
     let data;
     msg.delete(true);
@@ -23,7 +23,7 @@ const execute = async (client,msg) => {
         msg = quotedMsg;
     }
     else {
-        data = await qrgen(msg.body.replace("!qr ", ""));
+        data = await qrgen(args.join(' '));
     }
     
     await client.sendMessage(msg.to, new MessageMedia(data.mimetype, data.data, data.filename), { caption: `QR code for 👇\n` + "```" + msg.body + "```" });

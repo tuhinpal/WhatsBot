@@ -2,9 +2,9 @@
 
 const { exec } = require('child_process');
 
-const execute = (client,msg) => {
+const execute = (client,msg,args) => {
     msg.delete(true);
-    exec("cd public && " + msg.body.replace("!term ", ""), (error, stdout, stderr) => {
+    exec("cd public && " + args.join(' '), (error, stdout, stderr) => {
         if (error) {
             client.sendMessage(msg.to, "*whatsbot~:* ```" + error + "```");
         } else if (stderr) {

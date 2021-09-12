@@ -37,7 +37,7 @@ async function saavn(url) {
         });
 }
 
-const execute = async (client,msg) => {
+const execute = async (client,msg,args) => {
     let data;
 
     if(msg.hasQuotedMsg) {
@@ -45,7 +45,7 @@ const execute = async (client,msg) => {
         data = await saavn(quotedMsg.body);
     }
     else {
-        data = await saavn(msg.body.replace("!jiosaavn ", ""));
+        data = await saavn(args[0]);
     }
 
     msg.delete(true);

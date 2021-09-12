@@ -2,4 +2,8 @@
 
 const execute = (client,msg) => msg.reply('pong');
 
-module.exports = {execute};
+module.exports = {
+    name: '',
+    description: '',
+    help,
+    execute};

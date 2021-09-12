@@ -37,4 +37,8 @@ const execute = async (client,msg,args) => {
 };
 
 
-module.exports = {execute};
+module.exports = {
+    name: '',
+    description: '',
+    help,
+    execute};

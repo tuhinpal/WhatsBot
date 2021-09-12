@@ -15,7 +15,7 @@ async function carbon(text) {
     });
 }
 
-const execute = async (client,msg) => {
+const execute = async (client,msg,args) => {
     let data;
 
     msg.delete(true);
@@ -25,7 +25,7 @@ const execute = async (client,msg) => {
         msg = quotedMsg;
     }
     else {
-        data = await carbon(msg.body.replace("!carbon ", ""));
+        data = await carbon(args.join(' '));
     }
 
     if (data == "error") {

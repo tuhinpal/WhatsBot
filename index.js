@@ -19,7 +19,7 @@ const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] 
 
 client.initialize();
 
-client.on('auth_failure', msg => {
+client.on('auth_failure', () => {
     console.error("There is a problem in authentication, Kindly set the env var again and restart the app");
 });
 
@@ -29,10 +29,13 @@ client.on('ready', () => {
 
 client.on('message_create', async msg => {
     if(msg.fromMe && msg.body.startsWith('!')) {
-        let command = msg.body.slice(1).trim().split(/ +/g).shift().toLowerCase();
+        let args = msg.body.slice(1).trim().split(/ +/g);
+        let command = args.shift().toLowerCase();
+
+        console.log({command,args});
 
         if (availableCommands.has(command)) {
-            await require(`./commands/${command}`).execute(client, msg);
+            await require(`./commands/${command}`).execute(client,msg,args);
         }
 
         else {

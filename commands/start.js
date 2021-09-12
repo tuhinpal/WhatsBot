@@ -28,7 +28,8 @@ const execute = async (client,msg) => {
 };
 
 module.exports = {
-    name: '',
-    description: '',
-    help,
+    name: 'Start',
+    description: 'start command',
+    command: '!start',
+    help: '',
     execute};

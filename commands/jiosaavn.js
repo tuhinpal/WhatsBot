@@ -59,7 +59,8 @@ const execute = async (client,msg,args) => {
 
 
 module.exports = {
-    name: '',
-    description: '',
-    help,
+    name: 'Jiosaavn Song Download',
+    description: 'Provides Download link for song via Jiosaavn',
+    command: '!jiosaavn',
+    help: '',
     execute};

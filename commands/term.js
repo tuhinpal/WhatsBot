@@ -16,7 +16,8 @@ const execute = async (client,msg,args) => {
 };
 
 module.exports = {
-    name: '',
-    description: '',
-    help,
+    name: 'Terminal',
+    description: 'Use teminal remotely',
+    command: '!term',
+    help: '',
     execute};

@@ -3,7 +3,8 @@
 const execute = (client,msg) => msg.reply('pong');
 
 module.exports = {
-    name: '',
-    description: '',
-    help,
+    name: 'Ping',
+    description: 'responds with pong',
+    command: '!ping',
+    help: '',
     execute};

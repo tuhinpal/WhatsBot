@@ -14,7 +14,8 @@ const execute = async (client,msg) => {
 };
 
 module.exports = {
-    name: '',
-    description: '',
-    help,
+    name: 'delete',
+    description: 'Deletes the selected message if it is sent by the User',
+    command: '!delete',
+    help: '',
     execute};

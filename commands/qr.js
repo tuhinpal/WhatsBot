@@ -30,7 +30,8 @@ const execute = async (client,msg,args) => {
 };
 
 module.exports = {
-    name: '',
-    description: '',
-    help,
+    name: 'QR generator',
+    description: 'Generates QR for given text',
+    command: '!qr',
+    help: '',
     execute};

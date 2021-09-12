@@ -38,7 +38,8 @@ const execute = async (client,msg,args) => {
 
 
 module.exports = {
-    name: '',
-    description: '',
-    help,
+    name: 'Carbon',
+    description: 'Creates a crabon.sh image from text',
+    command: '!carbon',
+    help: '',
     execute};

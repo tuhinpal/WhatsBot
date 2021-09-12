@@ -33,7 +33,8 @@ const execute = async (client,msg,args) => {
 };
 
 module.exports = {
-    name: '',
-    description: '',
-    help,
+    name: 'Weather',
+    description: 'Gets weather info for given location',
+    command: '!weather',
+    help: '',
     execute};

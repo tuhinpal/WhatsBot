@@ -83,7 +83,8 @@ const execute = async (client,msg,args) => {
 
 
 module.exports = {
-    name: '',
-    description: '',
-    help,
+    name: 'YouTube Download',
+    description: 'Gets download link for youtube video',
+    command: '!yt',
+    help: '',
     execute};

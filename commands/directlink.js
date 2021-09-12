@@ -38,7 +38,8 @@ const execute = async (client,msg) => {
 
 
 module.exports = {
-    name: '',
-    description: '',
-    help,
+    name: 'Direct Link',
+    description: 'uploads media toh telegra.ph and creates a direct download link',
+    command: '!directlink',
+    help: '',
     execute};

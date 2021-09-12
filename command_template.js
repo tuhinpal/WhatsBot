@@ -6,5 +6,6 @@ const execute = async (client,msg,/*args*/) => {
 module.exports = {
     name: '',
     description: '',
-    help,
+    command: '',
+    help: '',
     execute};

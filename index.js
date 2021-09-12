@@ -1,7 +1,7 @@
 //jshint esversion:8
 const express = require('express');
 const app = express();
-const { Client, MessageMedia } = require('whatsapp-web.js');
+const { Client } = require('whatsapp-web.js');
 const config = require('./config');
 const fs = require("fs");
 

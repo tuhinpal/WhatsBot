@@ -10,3 +10,4 @@ npm
 .eslintcache
 session.json
 .cache/
+.env

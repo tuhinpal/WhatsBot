@@ -1,5 +1,5 @@
 //jshint esversion:8
-const execute = async (client,msg,/*args*/) => {
+const execute = async (client,msg/*,args*/) => {
 
 };
 

@@ -11,7 +11,8 @@ fs.readdir("./commands", (err, files) => {
     if (err) 
         return console.error(e);
     files.forEach(commandFile => {
-        availableCommands.add(commandFile.replace(".js", ""));
+        if(commandFile.endsWith('.js'))
+            availableCommands.add(commandFile.replace(".js", ""));
     });
 });
 

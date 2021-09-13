@@ -20,19 +20,21 @@ async function getDetails(title) {
                 if (watchdata.release_year){
                     caption += `Released in Year: *${watchdata.release_year}*\n`;
                 }
-                if (watchdata.score.imdb){
-                    caption += `IMDB Rating: *${watchdata.score.imdb}*\n`;
+                if(watchdata.score){
+                    if (watchdata.score.imdb){
+                        caption += `IMDB Rating: *${watchdata.score.imdb}*\n`;
+                    }
+                    if (watchdata.score.tmdb){
+                        caption += `TMDB Rating: *${watchdata.score.tmdb}*\n`;
+                    }
                 }
-                if (watchdata.score.tmdb){
-                    caption += `TMDB Rating: *${watchdata.score.tmdb}*\n`;
-                }
-                let providers = watchdata.providers;
-                if (Object.keys([providers]).length>0){
+                if (watchdata.providers){
                     caption += `\n${watchdata.title} ${watchdata.type} is available to watch on:\n`;
-                }
-                for(let provider in providers) {
-                    let providerTitle = provider.charAt(0).toUpperCase() + provider.substring(1).toLowerCase();
-                    caption += `*${providerTitle}*: ${providers[provider]}\n`;
+                    let providers = watchdata.providers;
+                    for(let provider in providers) {
+                        let providerTitle = provider.charAt(0).toUpperCase() + provider.substring(1).toLowerCase();
+                        caption += `*${providerTitle}*: ${providers[provider]}\n`;
+                    }
                 }
                 let out = ({
                     mimetype: "image/jpg",
@@ -46,6 +48,7 @@ async function getDetails(title) {
             }
         })
         .catch(function (error) {
+            console.log(error);
             return "error";
         });
 }

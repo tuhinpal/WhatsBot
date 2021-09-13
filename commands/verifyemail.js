@@ -115,8 +115,8 @@ const execute = async (client,msg,args) => {
 };
 
 module.exports = {
-    name: '',
-    description: '',
-    command: '',
+    name: 'Verify Email',
+    description: 'Verify the credibility of a given email',
+    command: '!verifyemail',
     help: '',
     execute};

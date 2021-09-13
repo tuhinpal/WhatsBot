@@ -14,7 +14,7 @@ const execute = async (client,msg,args) => {
         }
     } 
     else {
-        await client.sendMessage(msg.to, '```Search for the song with !song and then reply to the query result with this command');
+        await client.sendMessage(msg.to, '```Search for the song with !song and then reply to the query result with this command```');
     }
     
 };

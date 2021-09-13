@@ -1,6 +1,7 @@
 //jshint esversion:8
 const axios = require("axios");
 const fs = require('fs');
+const path = require('path');
 
 async function search(query) {
     try {
@@ -32,7 +33,7 @@ async function search(query) {
 async function download(songkey, id) {
     let pretifiedsongkey = Number(songkey.trim());
     try {
-        let saveddata = JSON.parse(fs.readFileSync(`${__dirname}/tempdata/song~${id}.json`, "utf8"));
+        let saveddata = JSON.parse(fs.readFileSync(path.join(__dirname,`../tempdata/song~${id}.json`), "utf8"));
         let song = saveddata.find(d => d.key === pretifiedsongkey);
 
         if (song) {

@@ -73,5 +73,5 @@ module.exports = {
     command: '!watch',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Watch*\n\nGet information about where to watch a Movie/Show. \n\n*!watch [movie-name]*\n`,
     execute};

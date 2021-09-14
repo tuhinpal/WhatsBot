@@ -32,5 +32,5 @@ module.exports = {
     command: '!ud',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Urban Dictionary*\n\nUrban Dictionary is a crowdsourced online dictionary for slang words and phrases.\n\n*!ud [Word]*\nto search a word using Urban Dictionary`,
     execute};

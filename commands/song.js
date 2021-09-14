@@ -18,5 +18,5 @@ module.exports = {
     command: '!song',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Song*\n\nSearch a song and download it. \n\n*!song [search-query]*\nEx: !song makhna\n\nThen replay the message with *!dldsong [id]*\nEx. !dldsong 1\n\n⚡ Powered by musicder.net`,
     execute};

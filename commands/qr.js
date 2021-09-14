@@ -35,5 +35,5 @@ module.exports = {
     command: '!qr',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: '`*QR generator*\n\nGenerate QR code with this module. Just send the text it will generate QR Code image for you.\n\n*!qr [Text]*\nor,\nReply a message with *!qr* to Create`',
     execute};

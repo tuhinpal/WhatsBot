@@ -10,5 +10,5 @@ module.exports = {
     command: '!awake',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: undefined,
     execute};

@@ -64,5 +64,5 @@ module.exports = {
     command: '!jiosaavn',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Jiosaavn*\n\nDownload a Jiosaavn song with this module. \n\n*!jiosaavn [Jiosaavn-Link]*\nor,\nReply a message with *!jiosaavn* to Download`,
     execute};

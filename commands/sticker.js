@@ -18,5 +18,5 @@ module.exports = {
     command: '!sticker',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Sticker Maker*\n\nCreate sticker from Image.\n\nReply an image with *!sticker* to get a sticker of that image.`,
     execute};

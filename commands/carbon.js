@@ -39,9 +39,9 @@ const execute = async (client,msg,args) => {
 
 module.exports = {
     name: 'Carbon',
-    description: 'Creates a crabon.sh image from text',
+    description: 'Creates a carbon.now.sh image from text',
     command: '!carbon',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Carbon*\n\nGenerate beautiful image with carbon.now.sh. Just send the text it will generate an image for you.\n\n*!carbon [Text]*\nor,\nReply a message with *!carbon* to Create`,
     execute};

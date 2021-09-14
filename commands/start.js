@@ -31,5 +31,7 @@ module.exports = {
     name: 'Start',
     description: 'Get device, client and bot info',
     command: '!start',
+    commandType: 'info',
+    isDependent: false,
     help: '',
     execute};

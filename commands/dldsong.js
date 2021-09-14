@@ -25,5 +25,5 @@ module.exports = {
     command: '!dldsong',
     commandType: 'plugin',
     isDependent: true,
-    help: '',
+    help: 'use !help song to learn about this command',
     execute};

@@ -88,5 +88,5 @@ module.exports = {
     command: '!yt',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Youtube*\n\nDownload a Youtube video with this command.\n\n*!yt [Youtube-Link]*\nor,\nReply a message with *!yt* to Download`,
     execute};

@@ -48,5 +48,5 @@ module.exports = {
     command: '!crypto',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Crypto Currency*\n\nGet current price of cryptocurrency. \n\n*!crypto [crypto-code]*\n`,
     execute};

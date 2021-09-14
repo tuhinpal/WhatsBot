@@ -38,5 +38,5 @@ module.exports = {
     command: '!weather',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Weather*\n\nLookup a city's weather with this command.\n\n*!weather [Place-Name]*\nTo check a weather`,
     execute};

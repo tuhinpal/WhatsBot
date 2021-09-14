@@ -52,5 +52,5 @@ module.exports = {
     command: '!spam',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Spam*\n\nSpam Messages. \n\n*!spam [count text]*\nOR\nreply *!spam [count]* to any message`,
     execute};

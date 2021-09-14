@@ -43,5 +43,5 @@ module.exports = {
     command: '!directlink',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Directlink*\n\nIt will generate photo's directlink for you.\n\nReply a photo with *!directlink* to Create`,
     execute};

@@ -14,10 +14,10 @@ const execute = async (client,msg) => {
 };
 
 module.exports = {
-    name: 'delete',
+    name: 'Delete Message',
     description: 'Deletes the selected message if it is sent by the User',
     command: '!delete',
     commandType: 'admin',
     isDependent: false,
-    help: '',
+    help: `*Delete Message*\n\n Deletes the selected messages for all users.\n\n to execute, reply to a message with !delete.\n\n NOTE:- It deletes only those messages which are sent by you.`,
     execute};

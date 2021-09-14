@@ -8,5 +8,5 @@ module.exports = {
     command: '!ping',
     commandType: 'info',
     isDependent: false,
-    help: '',
+    help: undefined,
     execute};

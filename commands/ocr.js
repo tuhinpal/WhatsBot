@@ -40,5 +40,5 @@ module.exports = {
     command: '!ocr',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*OCR*\n\nReads text from any readable image. \n\n*Reply a photo with !ocr to read text from that image.*\n`,
     execute};

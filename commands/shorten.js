@@ -46,5 +46,5 @@ module.exports = {
     command: '!shorten',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Shorten Link*\n\nCreates short URL for any valid URL. \n\n*!shorten [valid-url]*\n`,
     execute};

@@ -120,5 +120,5 @@ module.exports = {
     command: '!verifyemail',
     commandType: 'plugin',
     isDependent: false,
-    help: '',
+    help: `*Email Verifier*\n\nTest an Email's validity before it bounce. \n\n*Reply an email with !emailverifier*\nor,\n*!emailverifier [Email Address]*\n\n⚡ Powered by infospace.club`,
     execute};

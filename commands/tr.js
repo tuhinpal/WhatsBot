@@ -44,10 +44,10 @@ const execute = async (client,msg,args) => {
 
 
 module.exports = {
-    name: 'Translate',
+    name: 'Translator',
     description: 'Translates given text to requested language',
     command: '!tr',
     commandType: 'plugin',
     isDependent: false,
-    help:'',
+    help: `*Translator*\n\nIt will translate text in different languages.\n\n*!tr [Text]*\nor,\nReply a message with *!tr*\n\nor,\n\n*!tr[Output-Language] [Text]*\nor,\nReply a message with \n*!tr[Output-Language]*\nto translate it`,
     execute};

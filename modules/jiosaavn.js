@@ -1,5 +1,5 @@
 const axios = require('axios');
-const downloadserverurl = "https://mder.pages.dev/download/"
+const downloadserverurl = "https://musicder.t-ps.net/download/"
 
 async function mainF(url) {
 

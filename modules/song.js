@@ -43,7 +43,7 @@ async function download(songkey, id) {
                 return {
                     status: true,
                     content: {
-                        text: `🎶 *${data.song}* _(${data.year})_\n\n📀 *Artist :*  ` + "```" + data.singers + "```\n📚 *Album :*  " + "```" + data.album + "```" + `\n\n*Download Url* 👇\nhttps://mder.pages.dev/download/${data.id}`,
+                        text: `🎶 *${data.song}* _(${data.year})_\n\n📀 *Artist :*  ` + "```" + data.singers + "```\n📚 *Album :*  " + "```" + data.album + "```" + `\n\n*Download Url* 👇\nhttps://musicder.t-ps.net/download/${data.id}`,
                         image: await image(data.image)
                     }
                 }

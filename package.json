@@ -24,6 +24,7 @@
     "dependencies": {
         "@k3rn31p4nic/google-translate-api": "^1.1.1",
         "axios": "^0.21.0",
+        "google-translate-tts": "^0.3.0",
         "child_process": "^1.0.2",
         "express": "^4.17.1",
         "form-data": "^3.0.0",

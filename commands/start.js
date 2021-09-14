@@ -29,7 +29,7 @@ const execute = async (client,msg) => {
 
 module.exports = {
     name: 'Start',
-    description: 'start command',
+    description: 'Get device, client and bot info',
     command: '!start',
     help: '',
     execute};

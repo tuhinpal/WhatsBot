@@ -71,5 +71,7 @@ module.exports = {
     name: 'Watch',
     description: 'Get show/movie details',
     command: '!watch',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

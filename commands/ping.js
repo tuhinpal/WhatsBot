@@ -6,5 +6,7 @@ module.exports = {
     name: 'Ping',
     description: 'responds with pong',
     command: '!ping',
+    commandType: 'info',
+    isDependent: false,
     help: '',
     execute};

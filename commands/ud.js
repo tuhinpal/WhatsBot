@@ -30,5 +30,7 @@ module.exports = {
     name: 'Urban Dictionary',
     description: 'Gets dictionary meanings of words',
     command: '!ud',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

@@ -38,5 +38,7 @@ module.exports = {
     name: 'OCR',
     description: 'Extracts text content from given image',
     command: '!ocr',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

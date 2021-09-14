@@ -23,5 +23,7 @@ module.exports = {
     name: 'Download Song',
     description: 'Download selected song from the list',
     command: '!dldsong',
+    commandType: 'plugin',
+    isDependent: true,
     help: '',
     execute};

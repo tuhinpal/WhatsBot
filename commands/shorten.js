@@ -44,5 +44,7 @@ module.exports = {
     name: 'Shorten Link',
     description: 'get shortend link for the given url',
     command: '!shorten',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

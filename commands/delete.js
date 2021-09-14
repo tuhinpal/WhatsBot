@@ -17,5 +17,7 @@ module.exports = {
     name: 'delete',
     description: 'Deletes the selected message if it is sent by the User',
     command: '!delete',
+    commandType: 'admin',
+    isDependent: false,
     help: '',
     execute};

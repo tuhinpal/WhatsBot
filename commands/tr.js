@@ -47,5 +47,7 @@ module.exports = {
     name: 'Translate',
     description: 'Translates given text to requested language',
     command: '!tr',
+    commandType: 'plugin',
+    isDependent: false,
     help:'',
     execute};

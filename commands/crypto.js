@@ -46,5 +46,7 @@ module.exports = {
     name: 'Crypto Currency',
     description: 'Gets price info for requested crypto currency',
     command: '!crypto',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

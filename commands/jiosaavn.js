@@ -62,5 +62,7 @@ module.exports = {
     name: 'Jiosaavn Song Download',
     description: 'Provides Download link for song via Jiosaavn',
     command: '!jiosaavn',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

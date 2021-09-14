@@ -65,5 +65,7 @@ module.exports = {
     name: 'Git Info',
     description: 'gets information for requested git repo',
     command: '!git',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

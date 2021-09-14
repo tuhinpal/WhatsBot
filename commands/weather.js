@@ -36,5 +36,7 @@ module.exports = {
     name: 'Weather',
     description: 'Gets weather info for given location',
     command: '!weather',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

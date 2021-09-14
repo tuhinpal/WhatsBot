@@ -8,5 +8,7 @@ module.exports = {
     name: 'Awake',
     description: 'marks user as online',
     command: '!awake',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

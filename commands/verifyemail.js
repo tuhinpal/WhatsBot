@@ -118,5 +118,7 @@ module.exports = {
     name: 'Verify Email',
     description: 'Verify the credibility of a given email',
     command: '!verifyemail',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

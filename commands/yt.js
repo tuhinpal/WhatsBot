@@ -86,5 +86,7 @@ module.exports = {
     name: 'YouTube Download',
     description: 'Gets download link for youtube video',
     command: '!yt',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

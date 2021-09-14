@@ -33,5 +33,7 @@ module.exports = {
     name: 'QR generator',
     description: 'Generates QR for given text',
     command: '!qr',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

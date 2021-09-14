@@ -41,5 +41,7 @@ module.exports = {
     name: 'Direct Link',
     description: 'uploads media toh telegra.ph and creates a direct download link',
     command: '!directlink',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

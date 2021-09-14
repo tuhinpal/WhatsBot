@@ -41,5 +41,7 @@ module.exports = {
     name: 'Carbon',
     description: 'Creates a crabon.sh image from text',
     command: '!carbon',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

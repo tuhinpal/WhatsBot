@@ -16,5 +16,7 @@ module.exports = {
     name: 'Sticker Maker',
     description: 'generates sticker from image',
     command: '!sticker',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

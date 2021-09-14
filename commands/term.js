@@ -19,5 +19,7 @@ module.exports = {
     name: 'Terminal',
     description: 'Use teminal remotely',
     command: '!term',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

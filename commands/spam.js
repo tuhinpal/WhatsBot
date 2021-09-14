@@ -50,5 +50,7 @@ module.exports = {
     name: 'Spam',
     description: 'spams a certain message for given number of times',
     command: '!spam',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

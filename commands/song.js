@@ -16,5 +16,7 @@ module.exports = {
     name: 'Search Song',
     description: 'Search songs on jiosaavn',
     command: '!song',
+    commandType: 'plugin',
+    isDependent: false,
     help: '',
     execute};

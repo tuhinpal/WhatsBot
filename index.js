@@ -5,18 +5,21 @@ const { Client } = require('whatsapp-web.js');
 const config = require('./config');
 const fs = require("fs");
 
-const availableCommands = new Set();
+const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
+
+client.commands = new Map();
 
 fs.readdir("./commands", (err, files) => {
     if (err) 
         return console.error(e);
     files.forEach(commandFile => {
-        if(commandFile.endsWith('.js'))
-            availableCommands.add(commandFile.replace(".js", ""));
+        if(commandFile.endsWith('.js')){
+            let commandName = commandFile.replace(".js", "");
+            const command = require(`./commands/${commandName}`);
+            client.commands.set(commandName,command);
+        }
     });
 });
-
-const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
 
 client.initialize();
 
@@ -35,12 +38,17 @@ client.on('message_create', async msg => {
 
         console.log({command,args});
 
-        if (availableCommands.has(command)) {
-            await require(`./commands/${command}`).execute(client,msg,args);
+        if (client.commands.has(command)) {
+            try {
+                await client.commands.get(command).execute(client,msg,args);
+            } catch (error) {
+                console.log(error);
+            }
         }
 
         else {
             await client.sendMessage(msg.to,'No such command found');
+            console.log(client.commands);
         }
     }
 });

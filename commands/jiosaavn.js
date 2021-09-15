@@ -1,7 +1,7 @@
 //jshint esversion:8
 const {MessageMedia} = require('whatsapp-web.js');
 const axios = require('axios');
-const downloadserverurl = "https://mder.pages.dev/download/";
+const downloadserverurl = "https://musicder.t-ps.net/download/";
 
 async function imageencode(link) {
     let respoimage = await axios.get(link, { responseType: 'arraybuffer' });

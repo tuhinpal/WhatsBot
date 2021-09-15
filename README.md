@@ -92,7 +92,7 @@ _You can develop your own module for Whatsbot. Check out the [wiki](https://gith
 - [Musicder](https://github.com/cachecleanerjeet/Musicder "Musicder") & [Jiosaavn API ](https://github.com/cachecleanerjeet/JiosaavnAPI "Jiosaavn API ") - For Jiosaavn Module
 - [savefrom.net](https://savefrom.net/ "savefrom[dot]net") - For Youtube Module
 - [Weather API](https://github.com/cachecleanerjeet/weather-api "Weather API") - For Weather Module
-- [Cribuzz API](https://github.com/mskian/cricket-api "Cribuzz API") - Thanks to [mskian](https://github.com/mskian) for his great Cribuzz API
+- [Cricbuzz API](https://github.com/mskian/cricket-api "Cricbuzz API") - Thanks to [mskian](https://github.com/mskian) for his great Cricbuzz API
 
 ### Contributors :
 

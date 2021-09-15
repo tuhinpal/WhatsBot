@@ -1,0 +1,52 @@
+{
+  "name": "Whatsbot",
+  "description": "Modular Userbot for Whatsapp",
+  "repository": "https://github.com/TheWhatsBot/WhatsBot",
+  "logo": "https://telegra.ph/file/96ccad5945c18944c5f15.png",
+  "keywords": [
+    "whatsbot",
+    "whatsapp-userbot",
+    "whatsapp-bot",
+    "whatsapp-userbot",
+    "whatsapp"
+  ],
+  "stack": "container",
+  "env": {
+    "SESSION": {
+      "description": "Puppeteer Session. Get it by running genToken.js",
+      "value": ""
+    },
+    "PMPERMIT_ENABLED": {
+      "description": "Enable Pmpermit write true or false only",
+      "value": "true"
+    },
+    "MONGODB_URL": {
+      "description": "MongoDB URL, Get it for free from cloud.mongodb.com",
+      "value": ""
+    },
+    "PMPERMIT_MUTETIME": {
+      "description": "How many seconds an user get muted if he is spamming. Default is 30 Minutes (1800 Secs)",
+      "value": "1800"
+    },
+    "YT_DATA_API_KEY": {
+      "description": "Youtube DATA API key, grab it from cloud.google.com",
+      "value": ""
+    },
+    "DEFAULT_TR_LANG": {
+      "description": "Default Translation Language",
+      "value": "en"
+    },
+    "ENABLE_DELETE_ALERT": {
+      "description": "If true & if someone delete message in PM, Bot will send the deleted message in that chat (Exclude Media)",
+      "value": "true"
+    },
+    "OCR_SPACE_API_KEY": {
+      "description": "Get it from https://ocr.space/OCRAPI",
+      "value": ""
+    },
+    "INFOSPACE_API_KEY": {
+      "description": "Get it from https://infospace.club",
+      "value": ""
+    }
+  }
+}

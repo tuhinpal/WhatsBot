@@ -1,0 +1,41 @@
+{
+    "name": "whatsbot",
+    "version": "1.5.0",
+    "description": "Plugable Userbot for WhatsApp",
+    "main": "main.js",
+    "scripts": {
+        "start": "node main.js",
+        "gentoken": "node genToken.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TheWhatsBot/WhatsBot.git"
+    },
+    "keywords": [
+        "Whatsapp-Userbot",
+        "whatsapp-bot"
+    ],
+    "author": "Tuhin Kanti Pal",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/TheWhatsBot/WhatsBot/issues"
+    },
+    "homepage": "https://github.com/TheWhatsBot/WhatsBot#readme",
+    "dependencies": {
+        "@k3rn31p4nic/google-translate-api": "^1.1.1",
+        "axios": "^0.21.0",
+        "child_process": "^1.0.2",
+        "express": "^4.17.1",
+        "form-data": "^3.0.0",
+        "mime-to-extensions": "^1.0.2",
+        "mongodb": "^3.6.3",
+        "node-cron": "^3.0.0",
+        "ocr-space-api-wrapper": "^1.0.6",
+        "qr-image": "^3.2.0",
+        "qrcode-svg": "^1.1.0",
+        "qrcode-terminal": "^0.12.0",
+        "serve-index": "^1.9.1",
+        "urban-dictionary": "^2.2.1",
+        "whatsapp-web.js": "^1.13.2"
+    }
+}

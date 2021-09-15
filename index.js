@@ -1,10 +1,11 @@
 //jshint esversion:8
 const express = require('express');
 const app = express();
-const { Client } = require('whatsapp-web.js');
+const { Client, MessageMedia } = require('whatsapp-web.js');
 const pmpermit = require('./modules/pmpermit');
 const config = require('./config');
 const fs = require("fs");
+const serveIndex = require('serve-index');
 
 const client = new Client({ puppeteer: { headless: true, args: ['--no-sandbox'] }, session: config.session });
 

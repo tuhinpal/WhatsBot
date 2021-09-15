@@ -11,7 +11,6 @@ async function ud(term) {
             example: entries[0].example
         });
     }).catch((error) => {
-        console.log(error);
         return "error";
     });
 }

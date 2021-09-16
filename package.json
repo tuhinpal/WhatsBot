@@ -22,9 +22,10 @@
     },
     "homepage": "https://github.com/TheWhatsBot/WhatsBot#readme",
     "dependencies": {
-        "@k3rn31p4nic/google-translate-api": "^1.1.1",
+        "@iamtraction/google-translate": "^1.1.2",
         "axios": "^0.21.0",
         "child_process": "^1.0.2",
+        "dotenv": "^10.0.0",
         "express": "^4.17.1",
         "form-data": "^3.0.0",
         "mime-to-extensions": "^1.0.2",
@@ -36,7 +37,6 @@
         "qrcode-terminal": "^0.12.0",
         "serve-index": "^1.9.1",
         "urban-dictionary": "^2.2.1",
-        "whatsapp-web.js": "^1.13.2",
-        "dotenv": "^10.0.0"
+        "whatsapp-web.js": "^1.13.2"
     }
 }

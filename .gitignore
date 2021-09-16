@@ -10,3 +10,5 @@ npm
 .eslintcache
 session.json
 .cache/
+.env
+tempdata/*.json

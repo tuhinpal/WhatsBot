@@ -1,6 +1,6 @@
 {
     "name": "whatsbot",
-    "version": "1.5.0",
+    "version": "2.0.0",
     "description": "Plugable Userbot for WhatsApp",
     "main": "main.js",
     "scripts": {
@@ -36,6 +36,7 @@
         "qrcode-terminal": "^0.12.0",
         "serve-index": "^1.9.1",
         "urban-dictionary": "^2.2.1",
-        "whatsapp-web.js": "^1.13.2"
+        "whatsapp-web.js": "^1.13.2",
+        "dotenv": "^10.0.0"
     }
 }

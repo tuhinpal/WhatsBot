@@ -1,10 +1,14 @@
+//jshint esversion:8
+//jshint -W033
 const config = require('../config');
 const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs');
+const path = require('path');
 
 async function insert(id) {
+    let insertdata;
     try {
-        var insertdata = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+        insertdata = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
         await insertdata.db("pmpermit").collection("data").insertOne({ number: id, times: 1, permit: false })
         return "inserted"
 
@@ -18,8 +22,9 @@ async function insert(id) {
 
 async function updateviolant(id, timesvio) { // promise update times data
 
+    let updatewrite;
     try {
-        var updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+        updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
 
         await updatewrite.db("pmpermit").collection("data").updateOne({ number: id }, { $set: { times: timesvio } })
         return "updated"
@@ -32,9 +37,9 @@ async function updateviolant(id, timesvio) { // promise update times data
 }
 
 async function readdb(id) { //Promise read data
-
+    let mongoread;
     try {
-        var mongoread = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+        mongoread = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
 
         var result = await mongoread.db("pmpermit").collection("data").find({ number: id }).toArray()
         if (result[0] == undefined) {
@@ -58,14 +63,15 @@ async function readdb(id) { //Promise read data
 }
 
 async function permitacton(id) {
+    let updatewrite;
     try {
-        var updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+        updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
 
         await updatewrite.db("pmpermit").collection("data").updateOne({ number: id }, { $set: { times: 1, permit: true } })
-        fs.readFile(__dirname + `/tempdata/${id}.json`, { encoding: 'utf8' },
+        fs.readFile(path.join(__dirname,`../tempdata/${id}.json`), { encoding: 'utf8' },
             async function(err, data) {
                 if (err) {
-                    fs.writeFile(__dirname + `/tempdata/${id}.json`, JSON.stringify({
+                    fs.writeFile(path.join(__dirname,`../tempdata/${id}.json`), JSON.stringify({
                         status: "found",
                         number: id,
                         times: 1,
@@ -77,9 +83,9 @@ async function permitacton(id) {
                         } else {}
                     })
                 } else {
-                    fs.unlink(__dirname + `/tempdata/${id}.json`, async function(erryt) {
+                    fs.unlink(path.join(__dirname,`../tempdata/${id}.json`), async function(erryt) {
                         if (erryt) {} else {
-                            fs.writeFile(__dirname + `/tempdata/${id}.json`, JSON.stringify({
+                            fs.writeFile(path.join(__dirname,`../tempdata/${id}.json`), JSON.stringify({
                                 status: "found",
                                 number: id,
                                 times: 1,
@@ -101,14 +107,15 @@ async function permitacton(id) {
     }
 }
 async function nopermitacton(id) {
+    let updatewrite;
     try {
-        var updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+        updatewrite = await MongoClient.connect(config.mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
 
         await updatewrite.db("pmpermit").collection("data").updateOne({ number: id }, { $set: { times: 1, permit: false } })
-        fs.readFile(__dirname + `/tempdata/${id}.json`, { encoding: 'utf8' },
+        fs.readFile(path.join(__dirname,`../tempdata/${id}.json`), { encoding: 'utf8' },
             async function(err, data) {
                 if (err) {} else {
-                    fs.unlink(__dirname + `/tempdata/${id}.json`, async function(erryt) {
+                    fs.unlink(path.join(__dirname,`../tempdata/${id}.json`), async function(erryt) {
                         if (erryt) {} else {}
                     })
                 }
@@ -123,7 +130,7 @@ async function handler(id) {
 
     async function checkfile(id) {
         try {
-            return JSON.parse(await fs.readFileSync(__dirname + `/tempdata/${id}.json`, { encoding: 'utf8' }))
+            return JSON.parse(await fs.readFileSync(path.join(__dirname,`../tempdata/${id}.json`), { encoding: 'utf8' }))
         } catch (error) {
             return await readdb(id)
         }
@@ -163,10 +170,10 @@ async function handler(id) {
             }
         }
     } else if (read.status == "found" && read.permit == true) {
-        fs.readFile(__dirname + `/tempdata/${id}.json`, { encoding: 'utf8' },
+        fs.readFile(path.join(__dirname,`../tempdata/${id}.json`), { encoding: 'utf8' },
             async function(err, data) {
                 if (err) {
-                    fs.writeFile(__dirname + `/tempdata/${id}.json`, JSON.stringify({
+                    fs.writeFile(path.join(__dirname,`../tempdata/${id}.json`), JSON.stringify({
                         status: "found",
                         number: id,
                         times: 1,

@@ -15,6 +15,6 @@ module.exports = {
     description: 'Disallow an allowed user for PM', // short description of what this command does
     command: '!nopm', //command with prefix. Ex command: '!test'
     commandType: 'admin', //
-    isDependent: true, //whether this command is related/dependent to some other command
+    isDependent: false, //whether this command is related/dependent to some other command
     help: 'This command is related to !allow. Type !help allow to learn about this', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
     execute};

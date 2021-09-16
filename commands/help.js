@@ -17,10 +17,8 @@ const execute = async (client,msg,args) => {
             }
                 
         });
-        await client.sendMessage(msg.to, adminHelp);
-        await client.sendMessage(msg.to, infoHelp);
-        await client.sendMessage(msg.to, pluginHelp);
-        await client.sendMessage(msg.to, commands.get('help').help);
+        let help = `${adminHelp}\n${infoHelp}\n${pluginHelp}\n${commands.get('help').help}`;
+        await client.sendMessage(msg.to, help);
     }
 
     else if(commands.has(args[0])){

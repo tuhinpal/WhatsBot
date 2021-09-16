@@ -11,3 +11,4 @@ npm
 session.json
 .cache/
 .env
+tempdata/*.json

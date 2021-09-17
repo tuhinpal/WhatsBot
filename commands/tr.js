@@ -1,7 +1,7 @@
 //jshint esversion:8
 const translate = require("@iamtraction/google-translate");
 const config = require("../config");
-const tr_languages = require("../helperdata/tr_languages");
+const tr_languages = require("../helpers/tr_languages");
 
 async function translator(langReq, text) {
     let lang;

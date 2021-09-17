@@ -1,4 +1,6 @@
 //jshint esversion:8
+
+//TODO: fix it
 const { MessageMedia } = require('whatsapp-web.js');
 const axios = require('axios');
 

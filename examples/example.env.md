@@ -5,14 +5,13 @@ The `.env` file is used to initialize all enviroment variables in the developmen
 Create the `.env` file in the root of your app and add your variables and values to it. These are all the variables that are needed by WhatsBot. Description about these can be found in [app.json](./app.json).
 
 ```env
-SESSION = "" 
+SESSION = ""
 PMPERMIT_ENABLED = ""
-MONGODB_URL = "" 
-PMPERMIT_MUTETIME = ""
+MONGODB_URL = ""
 YT_DATA_API_KEY = ""
 DEFAULT_TR_LANG = ""
 ENABLE_DELETE_ALERT = ""
-OCR_SPACE_API_KEY = "" 
+OCR_SPACE_API_KEY = ""
 INFOSPACE_API_KEY = ""
 ```
 
@@ -21,10 +20,10 @@ It is not mandatory to add all the variables in the `.env` file. Most of these h
 At the bare minimum, you need to initialize atleast the following variables to make it work in your local environment.
 
 ```env
-SESSION = "" 
-MONGODB_URL = "" 
+SESSION = ""
+MONGODB_URL = ""
 YT_DATA_API_KEY = ""
-OCR_SPACE_API_KEY = "" 
+OCR_SPACE_API_KEY = ""
 INFOSPACE_API_KEY = ""
 ```
 
@@ -36,4 +35,4 @@ INFOSPACE_API_KEY = ""
 
 - INFOSPACE_API_KEY : Get it from <https://infospace.club>.
 
-- MONGODB_URL :  Get it for free from cloud.mongodb.com. For a local mongodb instance in your system, this would be something like `mongodb://localhost:MONGO_PORT`. If you're using the default port then the url would be `mongodb://localhost:27017`.
+- MONGODB_URL : Get it for free from cloud.mongodb.com. For a local mongodb instance in your system, this would be something like `mongodb://localhost:MONGO_PORT`. If you're using the default port then the url would be `mongodb://localhost:27017`.

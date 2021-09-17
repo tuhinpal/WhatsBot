@@ -12,3 +12,7 @@ session.json
 .cache/
 .env
 tempdata/*.json
+cache/*
+!cache/readme.txt
+public/*
+!public/readme.txt

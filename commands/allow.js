@@ -5,8 +5,6 @@ const pmpermit = require("../helpers/pmpermit");
 const execute = async (client, msg) => {
   if (config.pmpermit_enabled == "true" && !msg.to.includes("-")) {
     await pmpermit.permit(msg.to.split("@")[0]);
-    let chat = await msg.getChat();
-    await chat.unmute(true);
     msg.reply("Allowed for PM");
   }
 };

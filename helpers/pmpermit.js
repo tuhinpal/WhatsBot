@@ -132,8 +132,24 @@ async function handler(id) {
   }
 }
 
+async function isPermitted(id) {
+  try {
+    try {
+      var checkPermit = JSON.parse(
+        fs.readFileSync(path.join(__dirname, `../cache/${id}.json`), "utf8")
+      );
+    } catch (error) {
+      var checkPermit = await read(id);
+    }
+    return checkPermit.permit;
+  } catch (e) {
+    return true;
+  }
+}
+
 module.exports = {
   handler,
   permit,
   nopermit,
+  isPermitted,
 };

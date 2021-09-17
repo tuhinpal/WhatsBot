@@ -5,6 +5,7 @@ const { Client } = require("whatsapp-web.js");
 const pmpermit = require("./helpers/pmpermit");
 const config = require("./config");
 const fs = require("fs");
+const logger = require("./logger");
 
 const client = new Client({
   puppeteer: { headless: true, args: ["--no-sandbox"] },
@@ -40,7 +41,6 @@ client.on("message", async (msg) => {
   if (!msg.author && config.pmpermit_enabled == "true") {
     // Pm check for pmpermit module
     var checkIfAllowed = await pmpermit.handler(msg.from.split("@")[0]); // get status
-    var chat = await msg.getChat(); // get chat
     if (!checkIfAllowed.permit) {
       // if not permitted
       if (checkIfAllowed.block) {
@@ -54,6 +54,27 @@ client.on("message", async (msg) => {
 });
 
 client.on("message_create", async (msg) => {
+  // auto pmpermit
+  try {
+    if (config.pmpermit_enabled == "true") {
+      var otherChat = await (await msg.getChat()).getContact();
+      if (
+        otherChat.isUser &&
+        !(await pmpermit.isPermitted(otherChat.number)) &&
+        !otherChat.isMe &&
+        msg.body !== "!nopm"
+      ) {
+        await pmpermit.permit(otherChat.number);
+        await logger(
+          client,
+          `User ${
+            otherChat.name || otherChat.number
+          } is automatically permitted for message !`
+        );
+      }
+    }
+  } catch (ignore) {}
+
   if (msg.fromMe && msg.body.startsWith("!")) {
     let args = msg.body.slice(1).trim().split(/ +/g);
     let command = args.shift().toLowerCase();

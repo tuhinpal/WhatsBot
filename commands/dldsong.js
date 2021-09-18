@@ -1,9 +1,9 @@
 //jshint esversion:8
-const {MessageMedia} = require('whatsapp-web.js');
-const {download} = require('../modules/song');
+const { MessageMedia } = require('whatsapp-web.js');
+const { download } = require('../helpers/song');
 
-const execute = async (client,msg,args) => {
-    if(msg.hasQuotedMsg) {
+const execute = async (client, msg, args) => {
+    if (msg.hasQuotedMsg) {
         msg.delete(true);
         let quotedMsg = await msg.getQuotedMessage();
         let getdata = await download(args[0], quotedMsg.id.id);
@@ -12,11 +12,11 @@ const execute = async (client,msg,args) => {
         } else {
             await client.sendMessage(msg.to, getdata.content);
         }
-    } 
+    }
     else {
         await client.sendMessage(msg.to, '```Search for the song with !song and then reply to the query result with this command```');
     }
-    
+
 };
 
 module.exports = {
@@ -26,4 +26,5 @@ module.exports = {
     commandType: 'plugin',
     isDependent: true,
     help: 'use !help song to learn about this command',
-    execute};
+    execute
+};

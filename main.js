@@ -62,7 +62,8 @@ client.on("message_create", async (msg) => {
         otherChat.isUser &&
         !(await pmpermit.isPermitted(otherChat.number)) &&
         !otherChat.isMe &&
-        msg.body !== "!nopm"
+        !msg.body.startsWith("!nopm") &&
+        msg.body !== "Not Allowed for PM"
       ) {
         await pmpermit.permit(otherChat.number);
         await logger(

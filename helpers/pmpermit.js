@@ -36,7 +36,7 @@ async function read(id) {
   try {
     var { conn, coll } = await database("pmpermit");
     var data = await coll.findOne({ number: id });
-    if (data?.permit) {
+    if (data && data.permit) {
       // save the cache for later usage
       fs.writeFileSync(
         path.join(__dirname, `../cache/${id}.json`),
@@ -76,9 +76,11 @@ async function nopermit(id) {
     var { conn, coll } = await database("pmpermit");
     await coll.updateOne({ number: id }, { $set: { times: 1, permit: false } });
 
-    if (fs.readFileSync(path.join(__dirname, `../cache/${id}.json`), "utf8")) {
-      fs.unlinkSync(path.join(__dirname, `../cache/${id}.json`));
-    }
+    try {
+      fs.unlinkSync(`${__dirname}/../cache/${id}.json`);
+      console.log(`Deleting cache file for: ${id}`);
+    } catch (nofile) {}
+
     return true;
   } catch (error) {
     return false;

@@ -2,6 +2,7 @@ const { Client } = require("whatsapp-web.js");
 var QRCode = require("qrcode-svg");
 const fs = require("fs");
 const app = require("express")();
+const logger = require("../logger");
 
 const client = new Client({
   puppeteer: { headless: true, args: ["--no-sandbox"] },
@@ -22,6 +23,8 @@ app.get("/qr.svg", (req, res) => {
   }
 });
 
+var token = "";
+
 app.listen(8000, () => {
   console.log(
     "Please make your Port 8000 public and open that in your browser"
@@ -33,12 +36,24 @@ app.listen(8000, () => {
   });
 
   client.on("authenticated", (session) => {
-    console.log(`\nYour Session string:\n`);
-    console.log(JSON.stringify(session));
-    fs.writeFileSync(__dirname + "/../session.json", JSON.stringify(session));
-    console.log(
-      "\n\nToken also saved on a file named session.json in this directory. Please delete this file after copy if you will use enviroment variable."
+    token = session;
+  });
+
+  client.on("ready", async () => {
+    // console.log(JSON.stringify(token));
+
+    await logger(
+      client,
+      `Here is your session token. Please keep is as a secret. You can delete the file if you don't need it.\n\n*Generated at:* ${new Date()}`
     );
-    process.exit(0);
+    await logger(client, JSON.stringify(token));
+
+    console.log(
+      "\n\nPlease open your Whatsapp and see your chat. Your session token will also be saved there."
+    );
+
+    setTimeout(() => {
+      process.exit();
+    }, 5000);
   });
 });

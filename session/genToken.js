@@ -1,6 +1,6 @@
 const { Client } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
-const fs = require("fs");
+const logger = require("../logger");
 
 const client = new Client({
   puppeteer: { headless: true, args: ["--no-sandbox"] },
@@ -12,12 +12,26 @@ client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });
 });
 
-client.on("authenticated", (session) => {
-  console.log(JSON.stringify(session));
+var token = "";
 
-  fs.writeFileSync(__dirname + "/../session.json", JSON.stringify(session));
-  console.log(
-    "\n\nToken also saved on a file named session.json in this directory. Please delete this file after copy if you will use enviroment variable."
+client.on("authenticated", (session) => {
+  token = session;
+});
+
+client.on("ready", async () => {
+  // console.log(JSON.stringify(token));
+
+  await logger(
+    client,
+    `Here is your session token. Please keep is as a secret. You can delete the file if you don't need it.\n\n*Generated at:* ${new Date()}`
   );
-  process.exit();
+  await logger(client, JSON.stringify(token));
+
+  console.log(
+    "\n\nPlease open your Whatsapp and see your chat. Your session token will also be saved there."
+  );
+
+  setTimeout(() => {
+    process.exit();
+  }, 5000);
 });

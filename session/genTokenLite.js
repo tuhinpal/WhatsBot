@@ -49,7 +49,7 @@ app.listen(8000, () => {
     await logger(client, JSON.stringify(token));
 
     console.log(
-      "\n\nPlease open your Whatsapp and see your chat. Your session token will also be saved there."
+      "\n\nPlease open your Whatsapp and see your chat. Your session token will be saved there."
     );
 
     setTimeout(() => {

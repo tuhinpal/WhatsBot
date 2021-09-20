@@ -107,14 +107,14 @@ async function handler(id) {
     return {
       permit: false,
       block: false,
-      msg: `*✋ Wait*\n\nPlease wait until I will get back to Online, Kindly don't send another message.`,
+      msg: `*WhatsBot_Notification - ✋ Wait*\n\n Please wait until I will get back to Online, Kindly don't send another message.`,
     };
   } else if (checkPermit.found && !checkPermit.permit) {
     if (checkPermit.times > 3) {
       return {
         permit: false,
         block: true,
-        msg: `*✋ Blocked*\n\nYou have been blocked for spamming.`,
+        msg: `*WhatsBot_Notification - ❌ Blocked*\n\n You have been blocked for spamming.`,
       };
     } else {
       var updateIt = await updateviolant(id, checkPermit.times + 1);
@@ -126,7 +126,7 @@ async function handler(id) {
       return {
         permit: false,
         block: false,
-        msg: `*✋ Wait*\n\nPlease wait until I will get back to Online, Kindly don't send another message. You have ${checkPermit.times} warning(s).`,
+        msg: `*WhatsBot_Notification - ✋ Wait*\n\nPlease wait until I will get back to Online, Kindly don't send another message. You have ${checkPermit.times} warning(s).`,
       };
     }
   } else {

@@ -7,7 +7,7 @@ const execute = async (client, msg) => {
     let unmuteDate = new Date();
     unmuteDate.setSeconds(Number(unmuteDate.getSeconds()) + 3600);
     await chat.mute(unmuteDate);
-    msg.reply(`You have been muted for 1 hour`);
+    msg.reply(`*WhatsBot_Notification - 🤫 Muted*\n\nYou have been muted for 1 hour`);
   }
 };
 

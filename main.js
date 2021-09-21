@@ -44,8 +44,10 @@ client.on("message", async (msg) => {
     if (!checkIfAllowed.permit) {
       // if not permitted
       if (checkIfAllowed.block) {
-        msg.reply(checkIfAllowed.msg);
-        await (await msg.getContact()).block();
+        await msg.reply(checkIfAllowed.msg);
+        setTimeout(async () => {
+          await (await msg.getContact()).block();
+        }, 3000);
       } else if (!checkIfAllowed.block) {
         msg.reply(checkIfAllowed.msg);
       }
@@ -59,11 +61,13 @@ client.on("message_create", async (msg) => {
     if (config.pmpermit_enabled == "true") {
       var otherChat = await (await msg.getChat()).getContact();
       if (
+        msg.fromMe &&
+        msg.type !== "notification_template" &&
         otherChat.isUser &&
         !(await pmpermit.isPermitted(otherChat.number)) &&
         !otherChat.isMe &&
-        !msg.body.startsWith("!nopm") &&
-        msg.body !== "Not Allowed for PM"
+        !msg.body.startsWith("!") &&
+        !msg.body.endsWith("_Powered by WhatsBot_")
       ) {
         await pmpermit.permit(otherChat.number);
         await logger(

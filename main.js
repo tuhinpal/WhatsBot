@@ -66,7 +66,7 @@ client.on("message_create", async (msg) => {
         otherChat.isUser &&
         !(await pmpermit.isPermitted(otherChat.number)) &&
         !otherChat.isMe &&
-        !msg.body.startsWith("!nopm") &&
+        !msg.body.startsWith("!") &&
         !msg.body.startsWith("*WhatsBot_Notification")
       ) {
         await pmpermit.permit(otherChat.number);

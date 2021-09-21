@@ -1,7 +1,7 @@
 //jshint esversion:8
 const execute = async (client, msg) => {
   if (!msg.to.includes("-")) {
-    await msg.reply(`*WhatsBot_Notification - ❌ Blocked* \n\n You have been blocked`);
+    await msg.reply(`*❌ Blocked* \n\n You have been blocked\n\n _Powered by WhatsBot_`);
     let chat = await msg.getChat();
     let contact = await chat.getContact();
     contact.block();

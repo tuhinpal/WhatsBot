@@ -63,10 +63,7 @@
 ### Deploy :
 
 [![Deploy with Heroku](https://www.herokucdn.com/deploy/button.svg "Deploy with Heroku")](https://heroku.com/deploy?template=https://github.com/TheWhatsBot/WhatsBot "Deploy with Heroku")<br>
-[![Deploy+on+Railway](https://railway.app/button.svg)](<https://railway.app/new/template?template=https://github.com/TheWhatsBot/WhatsBot&plugins=mongodb&envs=SESSION,PMPERMIT_ENABLED,DEFAULT_TR_LANG,ENABLE_DELETE_ALERT,YT_DATA_API_KEY,OCR_SPACE_API_KEY,INFOSPACE_API_KEY&SESSIONDesc=Puppeteer+Session.+Ge+it+by+running+genToken.js&PMPERMIT_ENABLEDDesc=Enable+Pmpermit+write+true+or+false+only&PMPERMIT_ENABLEDDefault=true&YT_DATA_API_KEYDesc=Youtube+DATA+API+key+grab+it+from+cloud.google.com&DEFAULT_TR_LANGDesc=Default+Translation+Language&DEFAULT_TR_LANGDefault=en&ENABLE_DELETE_ALERTDesc=If+true+and+if+someone+delete+message+in+PM,+Bot+will+send+the+deleted+message+in+that+chat+(Exclude+Media)&ENABLE_DELETE_ALERTDefault=true&OCR_SPACE_API_KEYDesc=Get+it+from+https://ocr.space/OCRAPI&INFOSPACE_API_KEYDesc=Get+it+from+https://infospace.club>)<br>
-Read the [wiki](https://github.com/TheWhatsBot/WhatsBot/wiki/Deploy-with-Heroku) before Deploy it with Heroku<br><br>
-[Deploy in VPS](https://github.com/TheWhatsBot/WhatsBot/wiki/Deploy-in-VPS)
-
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FTheWhatsBot%2FWhatsBot&plugins=mongodb&envs=SESSION%2CPMPERMIT_ENABLED%2CDEFAULT_TR_LANG%2CENABLE_DELETE_ALERT%2CYT_DATA_API_KEY%2COCR_SPACE_API_KEY%2CINFOSPACE_API_KEY&optionalEnvs=YT_DATA_API_KEY%2COCR_SPACE_API_KEY%2CINFOSPACE_API_KEY&SESSIONDesc=Puppeteer+Session.+Ge+it+by+running+genToken.js&PMPERMIT_ENABLEDDesc=Enable+Pmpermit+write+true+or+false+only&DEFAULT_TR_LANGDesc=Default+Translation+Language&ENABLE_DELETE_ALERTDesc=If+true+and+if+someone+delete+message+in+PM%2C+Bot+will+send+the+deleted+message+in+that+chat+%28Exclude+Media%29&YT_DATA_API_KEYDesc=Youtube+DATA+API+key+grab+it+from+cloud.google.com&OCR_SPACE_API_KEYDesc=Get+it+from+https%3A%2F%2Focr.space%2FOCRAPI&INFOSPACE_API_KEYDesc=Get+it+from+https%3A%2F%2Finfospace.club&PMPERMIT_ENABLEDDefault=true&DEFAULT_TR_LANGDefault=en&referralCode=tuhin)
 ### Commands :
 
 _Send <code>!help</code> in Anywhere. Or read this [Command's Wiki](https://github.com/TheWhatsBot/WhatsBot/wiki/Commands "Command's Wiki")_

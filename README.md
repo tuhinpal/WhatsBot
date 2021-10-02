@@ -57,6 +57,7 @@
 - **watch** - Find out where to watch a Movie/Show
 - **shorten** - Get Short URL
 - **ocr** - Extract Text from Image
+- **courier** - Fetches latest status of Courier/Shipments from multiple providers
 
 [More modules]("https://github.com/TheWhatsBot/WhatsBot/wiki/Commands")
 
@@ -64,6 +65,7 @@
 
 [![Deploy with Heroku](https://www.herokucdn.com/deploy/button.svg "Deploy with Heroku")](https://heroku.com/deploy?template=https://github.com/TheWhatsBot/WhatsBot "Deploy with Heroku")<br>
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FTheWhatsBot%2FWhatsBot&plugins=mongodb&envs=SESSION%2CPMPERMIT_ENABLED%2CDEFAULT_TR_LANG%2CENABLE_DELETE_ALERT%2CYT_DATA_API_KEY%2COCR_SPACE_API_KEY%2CINFOSPACE_API_KEY&optionalEnvs=YT_DATA_API_KEY%2COCR_SPACE_API_KEY%2CINFOSPACE_API_KEY&SESSIONDesc=Puppeteer+Session.+Ge+it+by+running+genToken.js&PMPERMIT_ENABLEDDesc=Enable+Pmpermit+write+true+or+false+only&DEFAULT_TR_LANGDesc=Default+Translation+Language&ENABLE_DELETE_ALERTDesc=If+true+and+if+someone+delete+message+in+PM%2C+Bot+will+send+the+deleted+message+in+that+chat+%28Exclude+Media%29&YT_DATA_API_KEYDesc=Youtube+DATA+API+key+grab+it+from+cloud.google.com&OCR_SPACE_API_KEYDesc=Get+it+from+https%3A%2F%2Focr.space%2FOCRAPI&INFOSPACE_API_KEYDesc=Get+it+from+https%3A%2F%2Finfospace.club&PMPERMIT_ENABLEDDefault=true&DEFAULT_TR_LANGDefault=en&referralCode=tuhin)
+
 ### Commands :
 
 _Send <code>!help</code> in Anywhere. Or read this [Command's Wiki](https://github.com/TheWhatsBot/WhatsBot/wiki/Commands "Command's Wiki")_

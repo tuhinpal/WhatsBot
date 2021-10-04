@@ -60,6 +60,6 @@ module.exports = {
     command: '!courier',
     commandType: 'plugin',
     isDependent: false,
-    help: `*courier*\n\nGet information about your couriers and shipments. \n\n*!courier [courier-name] [tracking-id]*\n`,
+    help: `*courier*\n\nGet information about your couriers and shipments. \n\n*!courier [courier-name] [tracking-id]*\n\nSupported: Ekart, Gati`,
     execute
 };

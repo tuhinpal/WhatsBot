@@ -24,11 +24,6 @@
       "description": "MongoDB URL, Get it for free from cloud.mongodb.com",
       "value": ""
     },
-
-    "YT_DATA_API_KEY": {
-      "description": "Youtube DATA API key, grab it from cloud.google.com",
-      "value": ""
-    },
     "DEFAULT_TR_LANG": {
       "description": "Default Translation Language",
       "value": "en"
@@ -39,10 +34,6 @@
     },
     "OCR_SPACE_API_KEY": {
       "description": "Get it from https://ocr.space/OCRAPI",
-      "value": ""
-    },
-    "INFOSPACE_API_KEY": {
-      "description": "Get it from https://infospace.club",
       "value": ""
     }
   }

@@ -3,7 +3,7 @@
   <br>
 <b>Whatsbot</b>
 </h1>
-<h4 align="center">Moduler Userbot for Whatsapp</h4> -->
+<h4 align="center">Moduler U***b*t for Whatsapp</h4> -->
 
 ![WhatsBot](https://socialify.git.ci/tuhinpal/WhatsBot/image?description=1&font=Source%20Code%20Pro&forks=1&language=1&owner=1&pattern=Floating%20Cogs&stargazers=1&theme=Dark) <br>
 

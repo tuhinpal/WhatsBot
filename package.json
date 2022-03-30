@@ -1,7 +1,7 @@
 {
   "name": "whatsbot",
   "version": "2.1.1",
-  "description": "Plugable Userbot for WhatsApp",
+  "description": "Plugable U***b*t for WhatsApp",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
@@ -13,7 +13,6 @@
     "url": "git+https://github.com/tuhinpal/WhatsBot.git"
   },
   "keywords": [
-    "Whatsapp-Userbot",
     "whatsapp-bot"
   ],
   "author": "Tuhin Kanti Pal",

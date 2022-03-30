@@ -14,7 +14,7 @@ async function emailVerifier(email) {
         let data = (
             await axios({
                 method: "post",
-                url: "https://email.t-ps.net/api",
+                url: "https://validateemail.projects.thetuhin.com/api",
                 headers: {
                     "thank-you": "tuhin",
                     "Content-Type": "application/json",

@@ -39,6 +39,6 @@
     "serve-index": "^1.9.1",
     "urban-dictionary": "^3.0.2",
     "weather-js": "^2.0.0",
-    "whatsapp-web.js": "^1.13.2"
+    "whatsapp-web.js": "^1.16.5"
   }
 }

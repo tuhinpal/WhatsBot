@@ -1,15 +1,9 @@
 {
   "name": "Whatsbot",
-  "description": "Modular Userbot for Whatsapp",
+  "description": "Modular Us**B*t for Whatsapp",
   "repository": "https://github.com/tuhinpal/WhatsBot",
   "logo": "https://telegra.ph/file/96ccad5945c18944c5f15.png",
-  "keywords": [
-    "whatsbot",
-    "whatsapp-userbot",
-    "whatsapp-bot",
-    "whatsapp-userbot",
-    "whatsapp"
-  ],
+  "keywords": ["whatsbot", "whatsapp-bot", "whatsapp"],
   "stack": "container",
   "env": {
     "SESSION": {

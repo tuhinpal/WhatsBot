@@ -79,10 +79,6 @@ _You can develop your own module for Whatsbot. Check out the [wiki](https://gith
 - Open whatsapp web in server using puppeteer
 - Listen messages and take action.
 
-### Inspiration :
-
-- [Userge](https://github.com/UsergeTeam/Userge "Userge") - This Project takes Pmpermit insprition from Userge
-
 ### Credits :
 
 - [Whatsapp Web JS](https://github.com/pedroslopez/whatsapp-web.js/ "Whatsapp Web JS") - This project is fully depended on this Library

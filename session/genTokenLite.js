@@ -1,4 +1,4 @@
-const { Client } = require("whatsapp-web.js");
+const { Client, LegacySessionAuth } = require("whatsapp-web.js");
 var QRCode = require("qrcode-svg");
 const fs = require("fs");
 const app = require("express")();
@@ -6,6 +6,9 @@ const logger = require("../logger");
 
 const client = new Client({
   puppeteer: { headless: true, args: ["--no-sandbox"] },
+  authStrategy: new LegacySessionAuth({
+    session: config.session,
+  }),
 });
 client.initialize();
 

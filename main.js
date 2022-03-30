@@ -125,7 +125,7 @@ client.on("disconnected", (reason) => {
 
 app.get("/", (req, res) => {
   res.send(
-    '<h1>This server is powered by Whatsbot<br><a href="https://github.com/TheWhatsBot/WhatsBot">https://github.com/TheWhatsBot/WhatsBot</a></h1>'
+    '<h1>This server is powered by Whatsbot<br><a href="https://github.com/tuhinpal/WhatsBot">https://github.com/tuhinpal/WhatsBot</a></h1>'
   );
 });
 

@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "node startProcess.js",
-    "gentoken": "node session/genToken.js"
+    "gentoken": "node session/genToken.js",
+    "gentokenwithdownload": "node session/genTokenWithDownload.js"
   },
   "repository": {
     "type": "git",

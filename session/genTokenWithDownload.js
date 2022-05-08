@@ -2,6 +2,7 @@ const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 const { write, clean } = require("./manage");
 const readline = require("readline");
+const app = require("express")();
 
 clean();
 
@@ -40,6 +41,14 @@ client.on("ready", () => {
   setTimeout(async () => {
     console.log("Session has been created");
     await write(password);
-    process.exit();
+    app.listen(8080, () => {
+      console.log(
+        "Go to http://{app_url}/session.secure to download the session"
+      );
+    });
   }, 3000);
+});
+
+app.get("/session.secure", (req, res) => {
+  res.download("./session.secure");
 });

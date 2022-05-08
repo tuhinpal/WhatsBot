@@ -1,7 +1,7 @@
 //jshint esversion:8
 const express = require("express");
 const app = express();
-const { Client, LegacySessionAuth } = require("whatsapp-web.js");
+const { Client, LocalAuth } = require("whatsapp-web.js");
 const pmpermit = require("./helpers/pmpermit");
 const config = require("./config");
 const fs = require("fs");
@@ -9,9 +9,7 @@ const logger = require("./logger");
 
 const client = new Client({
   puppeteer: { headless: true, args: ["--no-sandbox"] },
-  authStrategy: new LegacySessionAuth({
-    session: config.session,
-  }),
+  authStrategy: new LocalAuth({ clientId: "whatsbot" }),
 });
 
 client.commands = new Map();

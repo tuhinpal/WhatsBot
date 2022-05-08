@@ -17,3 +17,5 @@ cache/*
 public/*
 !public/readme.txt
 session/assets/qr.svg
+.wwebjs_auth/*
+session.zip

@@ -1,10 +1,11 @@
-const { Client, LegacySessionAuth } = require("whatsapp-web.js");
+const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
-const logger = require("../logger");
+const { write, clean } = require("./manage");
 
+clean();
 const client = new Client({
   puppeteer: { headless: true, args: ["--no-sandbox"] },
-  authStrategy: new LegacySessionAuth(),
+  authStrategy: new LocalAuth({ clientId: "whatsbot" }),
 });
 client.initialize();
 
@@ -13,26 +14,13 @@ client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });
 });
 
-var token = "";
-
-client.on("authenticated", (session) => {
-  token = session;
-});
-
-client.on("ready", async () => {
-  // console.log(JSON.stringify(token));
-
-  await logger(
-    client,
-    `Here is your session token. Please keep is as a secret. You can delete the file if you don't need it.\n\n*Generated at:* ${new Date()}`
-  );
-  await logger(client, JSON.stringify(token));
-
-  console.log(
-    "\n\nPlease open your Whatsapp and see your chat. Your session token will be saved there."
-  );
-
-  setTimeout(() => {
+client.on("ready", () => {
+  client.destroy();
+  console.log("Please wait...");
+  // wait because filesystem is busy
+  setTimeout(async () => {
+    console.log("Session has been created");
+    await write();
     process.exit();
-  }, 5000);
+  }, 3000);
 });

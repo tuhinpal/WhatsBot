@@ -6,6 +6,14 @@
   "keywords": ["whatsbot", "whatsapp-bot", "whatsapp"],
   "stack": "container",
   "env": {
+    "SESSION_KEY": {
+      "description": "Session encryption password",
+      "value": ""
+    },
+    "SESSION_URL": {
+      "description": "session.secure public url (It is safe because it is encrypted, But still if you want maybe you can create some sort of authorization stuff)",
+      "value": ""
+    },
     "PMPERMIT_ENABLED": {
       "description": "Enable Pmpermit write true or false only",
       "value": "true"

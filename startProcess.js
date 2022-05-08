@@ -1,11 +1,15 @@
-const { replicate, clean } = require("./session/manage");
+const { replicate, clean, fetchSession } = require("./session/manage");
 
-try {
-  clean();
-  replicate();
-  setTimeout(() => {
-    require("./main");
-  }, 2000);
-} catch (error) {
-  console.error(error?.message);
+async function main() {
+  try {
+    clean();
+    await fetchSession();
+    await replicate();
+    setTimeout(() => {
+      require("./main");
+    }, 2000);
+  } catch (error) {
+    console.error(error?.message);
+  }
 }
+main();

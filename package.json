@@ -1,6 +1,6 @@
 {
   "name": "whatsbot",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Plugable U***b*t for WhatsApp",
   "main": "main.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "dependencies": {
     "@iamtraction/google-translate": "^1.1.2",
     "adm-zip": "^0.5.9",
+    "aes-encrypt-stream": "^0.2.0",
     "axios": "^0.21.0",
     "child_process": "^1.0.2",
     "dotenv": "^10.0.0",

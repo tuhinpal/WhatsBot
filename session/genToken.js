@@ -1,13 +1,32 @@
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 const { write, clean } = require("./manage");
+const readline = require("readline");
 
 clean();
+
 const client = new Client({
   puppeteer: { headless: true, args: ["--no-sandbox"] },
   authStrategy: new LocalAuth({ clientId: "whatsbot" }),
 });
-client.initialize();
+
+let password = null;
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.question(
+  "Enter password to encrypt session (You need to put this in ENV): ",
+  (answer) => {
+    password = answer;
+    console.log("Password set to:", password);
+    console.log("Generating QR Code...");
+    rl.close();
+    client.initialize();
+  }
+);
 
 client.on("qr", (qr) => {
   console.log(`Scan this QR Code and copy the JSON\n`);
@@ -20,7 +39,7 @@ client.on("ready", () => {
   // wait because filesystem is busy
   setTimeout(async () => {
     console.log("Session has been created");
-    await write();
+    await write(password);
     process.exit();
   }, 3000);
 });

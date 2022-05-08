@@ -5,7 +5,8 @@ The `.env` file is used to initialize all enviroment variables in the developmen
 Create the `.env` file in the root of your app and add your variables and values to it. These are all the variables that are needed by WhatsBot. Description about these can be found in [app.json](./app.json).
 
 ```env
-SESSION = ""
+SESSION_KEY=""
+SESSION_URL=""
 PMPERMIT_ENABLED = ""
 MONGODB_URL = ""
 YT_DATA_API_KEY = ""
@@ -19,13 +20,15 @@ It is not mandatory to add all the variables in the `.env` file. Most of these h
 At the bare minimum, you need to initialize atleast the following variables to make it work in your local environment.
 
 ```env
-SESSION = ""
+SESSION_KEY = ""
 MONGODB_URL = ""
 YT_DATA_API_KEY = ""
 OCR_SPACE_API_KEY = ""
 ```
 
-- SESSION : Puppeteer Session. Get it by running genToken.js. As getToken.js creates a session.json file, this might not be necessary in a local environment as this variable has a fallback to the session.json file. It is mentioned here as it is the most inportant information needed by the bot to work.
+- SESSION_KEY : Your `session.secure` encryption key.
+
+- SESSION_URL : You can retrieve your session from an public hosted endpoint, This is just a file and this is secured with `SESSION_KEY`. Don't put it if you are using VPS or your Local machine.
 
 - YT_DATA_API_KEY : Youtube DATA API key, grab it from <https:/>/cloud.google.com>.
 

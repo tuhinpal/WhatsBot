@@ -18,4 +18,10 @@ public/*
 !public/readme.txt
 session/assets/qr.svg
 .wwebjs_auth/*
+.wwebjs_auth
 session.zip
+session.txt
+session-output/*
+session-output
+session
+session.secure

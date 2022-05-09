@@ -1,7 +1,7 @@
 {
   "name": "whatsbot",
   "version": "3.0.0",
-  "description": "Plugable U***b*t for WhatsApp",
+  "description": "Plugable UserBot for WhatsApp",
   "main": "main.js",
   "scripts": {
     "start": "node startProcess.js",

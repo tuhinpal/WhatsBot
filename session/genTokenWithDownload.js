@@ -49,6 +49,6 @@ client.on("ready", () => {
   }, 3000);
 });
 
-app.get("/session.secure", (req, res) => {
+app.get("*", async (req, res) => {
   res.download("./session.secure");
 });

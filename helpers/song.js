@@ -33,7 +33,7 @@ async function search(query) {
 async function download(songkey, id) {
     let pretifiedsongkey = Number(songkey.trim());
     try {
-        let saveddata = JSON.parse(fs.readFileSync(path.join(__dirname,`../tempdata/song~${id}.json`), "utf8"));
+        let saveddata = JSON.parse(fs.readFileSync(path.join(__dirname,`../cache/song~${id}.json`), "utf8"));
         let song = saveddata.find(d => d.key === pretifiedsongkey);
 
         if (song) {
@@ -65,6 +65,7 @@ async function download(songkey, id) {
         }
 
     } catch (error) {
+        console.log(error);
         return {
             status: false,
             content: `🙇‍♂️ *Error*\n\n` + "```Cache not found please search the song again```",

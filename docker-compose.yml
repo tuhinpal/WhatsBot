@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  app:
+    environment:
+      - DEFAULT_TR_LANG=${DEFAULT_TR_LANG}
+      - ENABLE_DELETE_ALERT=${ENABLE_DELETE_ALERT}
+      - MONGODB_URL=${MONGODB_URL}
+      - PMPERMIT_ENABLED=${PMPERMIT_ENABLED}
+      - SESSION_KEY=${SESSION_KEY}
+      - SESSION_URL=${SESSION_URL}
+    build: .
+    command: npm start
+    restart: on-failure
+    ports:
+      - "8080:8080"

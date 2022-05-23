@@ -61,13 +61,29 @@
 
 [More modules]("https://github.com/tuhinpal/WhatsBot/wiki/Commands")
 
-### Deploy :
+## ⚛️ Deploying on Heroku :
 
 [![Deploy with Heroku](https://www.herokucdn.com/deploy/button.svg "Deploy with Heroku")](https://heroku.com/deploy?template=https://github.com/tuhinpal/WhatsBot "Deploy with Heroku")<br>
-
 <!-- [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/RTyLts?referralCode=tuhin) -->
 
-- [Railway](https://railway.app/) template url is officially removed (https://github.com/tuhinpal/WhatsBot/issues/62)
+- [Railway](https://railway.app/) template url is officially removed (https://github.com/tuhinpal/WhatsBot/issues/62)<p>
+## 💫 Deploying on Okteto
+For deploy quickly, use this repo directly and deploy it to Okteto Cloud.
+
+You need to fillup the below variables in order to use it in Okteto.
+> DEFAULT_TR_LANG
+>
+> ENABLE_DELETE_ALERT
+>
+> MONGODB_URL
+>
+> PMPERMIT_ENABLED
+>
+> SESSION_KEY
+>
+> SESSION_URL
+>
+Pro Tip :- add app endpoint url to some auto pinger link cron-job.org so that app remains active and doesn't sleep 
 
 ### Commands :
 

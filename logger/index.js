@@ -1,4 +1,4 @@
-module.exports = async (client, text) => {
+module.exports = async function logger(client, text) {
   try {
     await client.sendMessage(client.info.wid._serialized, text);
     return true;

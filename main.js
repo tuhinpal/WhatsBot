@@ -6,6 +6,7 @@ const pmpermit = require("./helpers/pmpermit");
 const config = require("./config");
 const fs = require("fs");
 const logger = require("./logger");
+const { afkStatus } = require("./helpers/afkWrapper");
 
 const client = new Client({
   puppeteer: { headless: true, args: ["--no-sandbox"] },
@@ -38,7 +39,7 @@ client.on("ready", () => {
 });
 
 client.on("message", async (msg) => {
-  if (!msg.author && config.pmpermit_enabled == "true") {
+  if (!msg.author && config.pmpermit_enabled === "true") {
     // Pm check for pmpermit module
     var checkIfAllowed = await pmpermit.handler(msg.from.split("@")[0]); // get status
     if (!checkIfAllowed.permit) {
@@ -50,6 +51,30 @@ client.on("message", async (msg) => {
         }, 3000);
       } else if (!checkIfAllowed.block) {
         msg.reply(checkIfAllowed.msg);
+      }
+    } else {
+      await checkAndApplyAfkMode();
+    }
+  }
+
+  if (!msg.author && config.pmpermit_enabled !== "true") {
+    await checkAndApplyAfkMode();
+  }
+
+  async function checkAndApplyAfkMode() {
+    if (!msg.author) {
+      try {
+        let getstatus = await afkStatus();
+        if (getstatus.on) {
+          await msg.reply(`${getstatus.message}\n\n_Powered by WhatsBot_`);
+        }
+      } catch (e) {
+        await logger(
+          client,
+          `Incoming afk message error from ${msg.from.split("@")[0]}.\n\n${
+            e?.message
+          }`
+        );
       }
     }
   }

@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-module.exports = async (link) => {
+module.exports = async function processImage(link) {
   if (!link) throw new Error("No link provided");
   try {
     let image = await axios.get(link, { responseType: "arraybuffer" });

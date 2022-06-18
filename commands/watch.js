@@ -6,7 +6,7 @@ const axios = require('axios');
 async function getDetails(title) {
     let mainconfig = {
         method: 'get',
-        url: `https://sumanjay.vercel.app/watch/${title}` //Feel free to use this API 
+        url: `https://api.sumanjay.cf/watch/${title}` //Feel free to use this API 
     };
     return axios(mainconfig)
         .then(async function (response) {

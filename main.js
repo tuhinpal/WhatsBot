@@ -95,11 +95,8 @@ client.on("message_create", async (msg) => {
         !msg.body.endsWith("_Powered by WhatsBot_")
       ) {
         await pmpermit.permit(otherChat.number);
-        await logger(
-          client,
-          `User ${
-            otherChat.name || otherChat.number
-          } is automatically permitted for message !`
+        await msg.reply(
+          `You are automatically permitted for message !\n\n_Powered by WhatsBot_`
         );
       }
     }

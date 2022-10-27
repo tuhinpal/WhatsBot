@@ -1,4 +1,4 @@
-//jshint esversion:8
+//jshint esversion:11
 const express = require("express");
 const app = express();
 const { Client, LocalAuth } = require("whatsapp-web.js");
@@ -7,6 +7,7 @@ const config = require("./config");
 const fs = require("fs");
 const logger = require("./logger");
 const { afkStatus } = require("./helpers/afkWrapper");
+const { handler: getAfk } = require("./helpers/afkhandler");
 
 const client = new Client({
   puppeteer: { headless: true, args: ["--no-sandbox"] },
@@ -34,8 +35,13 @@ client.on("auth_failure", () => {
   );
 });
 
-client.on("ready", () => {
+client.on("ready", async () => {
   console.log("Bot has been started");
+  try {
+    await logger(client, "Bot has been started");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 client.on("message", async (msg) => {
@@ -62,20 +68,26 @@ client.on("message", async (msg) => {
   }
 
   async function checkAndApplyAfkMode() {
-    if (!msg.author) {
-      try {
-        let getstatus = await afkStatus();
-        if (getstatus.on) {
-          await msg.reply(`${getstatus.message}\n\n_Powered by WhatsBot_`);
-        }
-      } catch (e) {
-        await logger(
-          client,
-          `Incoming afk message error from ${msg.from.split("@")[0]}.\n\n${
-            e?.message
-          }`
+    const contact = await msg.getContact();
+    const afkData = await getAfk(contact?.name || contact?.pushname);
+    if (afkData) {
+      //if user is afk
+      const chat = await msg.getChat();
+      await chat.sendSeen();
+
+      if (afkData.notify) {
+        const { reason, timediff } = afkData;
+        let lastseen = "";
+        lastseen += timediff[0] ? `${timediff[0]} days ` : "";
+        lastseen += timediff[1] ? `${timediff[1]} hrs ` : "";
+        lastseen += timediff[2] ? `${timediff[2]} min ` : "";
+        lastseen += `${timediff[3]} sec ago`;
+        await msg.reply(
+          `${afkData.msg}\n\n😊😊😊\n\nI am currently offline...\n\n*Reason*: ${reason}\n*Last Seen*:${lastseen}`
         );
       }
+
+      await chat.markUnread();
     }
   }
 });

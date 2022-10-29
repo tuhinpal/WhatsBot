@@ -174,5 +174,6 @@ async function handler(sender) {
 module.exports = {
   setAfk,
   setOnline,
+  getAFKData,
   handler
 };

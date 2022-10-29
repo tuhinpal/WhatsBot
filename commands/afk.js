@@ -1,6 +1,6 @@
 //jshint esversion:11
 const logger = require("../logger");
-const { setAfk, setOnline } = require("../helpers/afkhandler");
+const { setAfk, setOnline, getAFKData } = require("../helpers/afkhandler");
 
 const afkOn = async (client, reason) => {
   let data = await setAfk(reason);
@@ -36,6 +36,26 @@ const afkOff = async (client) => {
   }
 };
 
+const afkStatus = async () => {
+  const data = await getAFKData();
+  if(data){
+    const time = new Intl.DateTimeFormat("en-IN", {
+      dateStyle: "medium",
+      timeStyle: "short",
+      timeZone: "Asia/Kolkata",
+    }).format(data.time);
+    await logger(
+      client,
+      `You've marked yourself offline at ${time}.\nReason: ${data.reason}\n\nIf you want to set yourself back online, use !online`
+    );
+  }else {
+    await logger(
+      client,
+      `You're online.`
+    );
+  }
+};
+
 const execute = async (client, msg, args) => {
   msg.delete(true);
   let mode = args.shift();
@@ -47,7 +67,7 @@ const execute = async (client, msg, args) => {
       await afkOff(client);
       break;
     case "status":
-      await logger(client, `WIP`);
+      await afkStatus();
       break;
     default:
       await logger(client, `Invalid option provide. Please refer to help.`);

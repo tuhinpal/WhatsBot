@@ -24,17 +24,6 @@ async function read() {
   }
 }
 
-async function getAFKData() {
-  let data;
-  try {
-    data = JSON.parse(fs.readFileSync(path.join(__dirname, `../cache/AFK.json`)));
-  } catch (error) {
-    data = await read();
-  }
-
-  return data;
-}
-
 async function updateChatList(chat) {
   const {conn,coll} = await database('afk');
   try {
@@ -59,6 +48,7 @@ async function updateChatList(chat) {
 
 }
 
+/* Userge inspired AFK message */
 function getAfkString(){
   const afkStrings =[
     "I'm busy right now. Please talk in a bag and when I come back you can just give me the bag!",
@@ -85,6 +75,16 @@ function getAfkString(){
   ];
 
   return afkStrings[Math.floor(Math.random()*afkStrings.length)];
+}
+
+async function getAFKData() {
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(path.join(__dirname, `../cache/AFK.json`)));
+  } catch (error) {
+    data = await read();
+  }
+  return data;
 }
 
 async function setAfk(reason) {
@@ -130,7 +130,7 @@ async function setOnline() {
     try {
       await coll.deleteOne({ afk: true });
       return {
-        chats: data.chats.map((ele) => ele[0]),
+        chats: data.chats,
         timediff
       };
     } catch (error) {
@@ -147,7 +147,7 @@ async function setOnline() {
   
 }
 
-async function handler(sender) {
+async function afkHandler(sender) {
   let data = await getAFKData();
   
   if(data) {
@@ -175,5 +175,5 @@ module.exports = {
   setAfk,
   setOnline,
   getAFKData,
-  handler
+  afkHandler
 };

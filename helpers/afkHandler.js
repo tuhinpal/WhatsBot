@@ -4,17 +4,8 @@ const path = require("path");
 const database = require("../db");
 const calcTime = require('./timediff');
 
-async function setDb() {
-  try {
-    const db = await database('afk');
-    return db;
-  } catch (error) {
-    return {};
-  }
-}
-
 async function read() {
-  let { conn, coll } = await setDb();
+  let { conn, coll } = await database('afk');
   try {
     let data = await coll.findOne({ afk: true });
     if (data) {
@@ -104,7 +95,7 @@ async function setAfk(reason) {
   if(data)
     return data;
 
-  const { conn, coll } = await setDb();
+  const { conn, coll } = await database('afk');
   const time = Math.floor(Date.now());
   data = { afk: true, reason, time, chats: [] };
 
@@ -129,7 +120,7 @@ async function setOnline() {
   let data = await getAFKData();
 
   if(data){
-    const { conn, coll } = await setDb();
+    const { conn, coll } = await database('afk');
     let timediff = calcTime(data.time,Date.now());
     try {
       fs.unlinkSync(path.join(__dirname, `../cache/AFK.json`));

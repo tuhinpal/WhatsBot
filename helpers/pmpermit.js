@@ -56,7 +56,12 @@ async function read(id) {
 async function permit(id) {
   try {
     var { conn, coll } = await database("pmpermit");
-    await coll.updateOne({ number: id }, { $set: { times: 1, permit: true } });
+    let { matchedCount } = await coll.updateOne(
+      { number: id },
+      { $set: { times: 1, permit: true } }
+    );
+    if (!matchedCount)
+      await coll.insertOne({ number: id, times: 1, permit: true });
     fs.writeFileSync(
       path.join(__dirname, `../cache/${id}.json`),
       JSON.stringify({ found: true, number: id, times: 1, permit: true })

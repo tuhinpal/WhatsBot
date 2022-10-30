@@ -71,8 +71,6 @@ client.on("message", async (msg) => {
     const afkData = await afkHandler(contact?.name || contact?.pushname);
     if (afkData?.notify) {
       //if user is afk
-      const chat = await msg.getChat();
-      await chat.sendSeen();
       const { reason, timediff } = afkData;
       let lastseen = "";
       lastseen += timediff[0] ? `${timediff[0]} days ` : "";
@@ -82,7 +80,6 @@ client.on("message", async (msg) => {
       await msg.reply(
         `${afkData.msg}\n\n😊😊😊\n\nI am currently offline...\n\n*Reason*: ${reason}\n*Last Seen*:${lastseen}`
       );
-      await chat.markUnread();
     }
   }
 });

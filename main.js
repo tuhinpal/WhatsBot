@@ -6,8 +6,7 @@ const pmpermit = require("./helpers/pmpermit");
 const config = require("./config");
 const fs = require("fs");
 const logger = require("./logger");
-const { afkStatus } = require("./helpers/afkWrapper");
-const { afkHandler } = require("./helpers/afkhandler");
+const { afkHandler } = require("./helpers/afkWrapper");
 
 const client = new Client({
   puppeteer: { headless: true, args: ["--no-sandbox"] },

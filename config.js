@@ -4,6 +4,7 @@ require("dotenv").config();
 
 module.exports = {
   session_key: process.env.SESSION_KEY,
+  timezone: process.env.TIMEZONE || Intl.DateTimeFormat().resolvedOptions().timeZone,
   pmpermit_enabled: process.env.PMPERMIT_ENABLED || "true",
   mongodb_url: process.env.MONGODB_URL || process.env.MONGO_URL || "",
   default_tr_lang: process.env.DEFAULT_TR_LANG || "en",

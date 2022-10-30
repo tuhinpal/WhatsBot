@@ -1,12 +1,13 @@
 //jshint esversion:11
+const config = require("../config");
 const logger = require("../logger");
-const { setAfk, setOnline, getAFKData } = require("../helpers/afkhandler");
+const { setAfk, setOnline, getAFKData } = require("../helpers/afkWrapper");
 
 const formatTime = (time) =>
   new Intl.DateTimeFormat("en-IN", {
     dateStyle: "medium",
     timeStyle: "short",
-    timeZone: "Asia/Kolkata",
+    timeZone: config.timezone,
   }).format(time);
 
 const afkOn = async (client, reason) => {
@@ -32,11 +33,11 @@ const afkOff = async (client) => {
   let data = await setOnline();
   if (data) {
     let msg = `You're now back online. `;
-    if (data.chats.length) console.log(data.chats);
-    msg += `While you were offline you recieved messages from \n\n${data.chats.reduce(
-      (list, chat) => list + `${chat[0]} --> ${formatTime(chat[1])}\n`,
-      ""
-    )}`;
+    if (data.chats.length)
+      msg += `While you were offline you recieved messages from \n\n${data.chats.reduce(
+        (list, chat) => list + `${chat[0]} --> ${formatTime(chat[1])}\n`,
+        ""
+      )}`;
     await logger(client, msg);
   } else {
     await logger(client, `Your aren't afk.`);

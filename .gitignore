@@ -22,4 +22,5 @@ session.txt
 session-output/*
 session-output
 session.secure
+utilities/
 .vscode/

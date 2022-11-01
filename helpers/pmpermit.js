@@ -1,12 +1,12 @@
-//jshint esversion:8
+//jshint esversion:11
 //jshint -W033
 const fs = require("fs");
 const path = require("path");
 const database = require("../db");
 
 async function insert(id) {
+  let { conn, coll } = await database("pmpermit");
   try {
-    var { conn, coll } = await database("pmpermit");
     await coll.insertOne({ number: id, times: 1, permit: false });
     return true;
   } catch (error) {
@@ -19,8 +19,8 @@ async function insert(id) {
 }
 
 async function updateviolant(id, timesvio) {
+  let { conn, coll } = await database("pmpermit");
   try {
-    var { conn, coll } = await database("pmpermit");
     await coll.updateOne({ number: id }, { $set: { times: timesvio } });
     return true;
   } catch (error) {
@@ -33,9 +33,9 @@ async function updateviolant(id, timesvio) {
 }
 
 async function read(id) {
+  let { conn, coll } = await database("pmpermit");
   try {
-    var { conn, coll } = await database("pmpermit");
-    var data = await coll.findOne({ number: id });
+    let data = await coll.findOne({ number: id });
     if (data && data.permit) {
       // save the cache for later usage
       fs.writeFileSync(
@@ -54,9 +54,14 @@ async function read(id) {
 }
 
 async function permit(id) {
+  let { conn, coll } = await database("pmpermit");
   try {
-    var { conn, coll } = await database("pmpermit");
-    await coll.updateOne({ number: id }, { $set: { times: 1, permit: true } });
+    let { matchedCount } = await coll.updateOne(
+      { number: id },
+      { $set: { times: 1, permit: true } }
+    );
+    if (!matchedCount)
+      await coll.insertOne({ number: id, times: 1, permit: true });
     fs.writeFileSync(
       path.join(__dirname, `../cache/${id}.json`),
       JSON.stringify({ found: true, number: id, times: 1, permit: true })
@@ -72,8 +77,8 @@ async function permit(id) {
 }
 
 async function nopermit(id) {
+  let { conn, coll } = await database("pmpermit");
   try {
-    var { conn, coll } = await database("pmpermit");
     await coll.updateOne({ number: id }, { $set: { times: 1, permit: false } });
 
     try {
@@ -93,13 +98,13 @@ async function nopermit(id) {
 
 async function handler(id) {
   // first check for cache
-
+  let checkPermit;
   try {
-    var checkPermit = JSON.parse(
+    checkPermit = JSON.parse(
       fs.readFileSync(path.join(__dirname, `../cache/${id}.json`), "utf8")
     );
   } catch (error) {
-    var checkPermit = await read(id);
+    checkPermit = await read(id);
   }
 
   if (!checkPermit.found) {
@@ -117,7 +122,7 @@ async function handler(id) {
         msg: `*❌ Blocked*\n\n You have been blocked for spamming.\n\n _Powered by WhatsBot_`,
       };
     } else {
-      var updateIt = await updateviolant(id, checkPermit.times + 1);
+      let updateIt = await updateviolant(id, checkPermit.times + 1);
       if (!updateIt) {
         console.log(
           `That's an error, Possible reason is your MongoDB url is not working ❌`
@@ -136,12 +141,13 @@ async function handler(id) {
 
 async function isPermitted(id) {
   try {
+    let checkPermit;
     try {
-      var checkPermit = JSON.parse(
+      checkPermit = JSON.parse(
         fs.readFileSync(path.join(__dirname, `../cache/${id}.json`), "utf8")
       );
     } catch (error) {
-      var checkPermit = await read(id);
+      checkPermit = await read(id);
     }
     return checkPermit.permit;
   } catch (e) {

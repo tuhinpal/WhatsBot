@@ -9,14 +9,16 @@ async function search(query) {
             await axios.get(`https://jiosaavn-api.vercel.app/search?query=${query}`)
         ).data;
 
-        if (response.result === "false") {
+        console.log(response);
+
+        if (response.results === "false") {
             throw "not-found";
         } else {
             let content = `*Results for* _'${query}'_\n\n`;
             let songarray = [];
-            for (let i = 0; i < response.length; i++) {
-                content += `*${i + 1}.* ${response[i].title} - ${response[i].more_info.singers}\n`;
-                songarray.push({ key: i + 1, id: response[i].id });
+            for (let i = 0; i < response.results.length; i++) {
+                content += `*${i + 1}.* ${response.results[i].title} - ${response.results[i].more_info.singers}\n`;
+                songarray.push({ key: i + 1, id: response.results[i].id });
             }
             content += `\nReply this message with \`\`\`!dldsong [number]\`\`\` to download !\n*Ex.* !dldsong 1`;
             return { status: true, content, songarray };

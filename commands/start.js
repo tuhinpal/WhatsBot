@@ -5,7 +5,6 @@ const { MessageMedia } = require("whatsapp-web.js");
 const packageJson = require("../package.json");
 
 async function get() {
-
   return {
     msg:
       `*Whatsbot*\n\nThis chat is Powered By *Whatsbot*\n\n*Whatsbot Version:* ${packageJson.version}\n*Pmpermit:* ${config.pmpermit_enabled}\n\n*Official Repository Url 👇*\n` +

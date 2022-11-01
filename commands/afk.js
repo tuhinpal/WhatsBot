@@ -24,7 +24,10 @@ const afkOn = async (client, chatid, reason) => {
       chatid,
       `You've marked yourself offline! To mark yourself back online use *!afk off*`
     );
-    await logger(client,`You've marked yourself offline at ${formatTime(Date.now())}`);
+    await logger(
+      client,
+      `You've marked yourself offline at ${formatTime(Date.now())}`
+    );
   } else {
     await client.sendMessage(chatid, `Some error occured.`);
   }
@@ -40,7 +43,7 @@ const afkOff = async (client, chatid) => {
         ""
       )}`;
     await client.sendMessage(chatid, msg);
-    await logger(client,`You came online at ${formatTime(Date.now())}`);
+    await logger(client, `You came online at ${formatTime(Date.now())}`);
   } else {
     await client.sendMessage(chatid, `Your aren't afk.`);
   }

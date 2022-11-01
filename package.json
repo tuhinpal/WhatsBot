@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node startProcess.js",
     "gentoken": "node session/genToken.js",
-    "gentokenwithdownload": "node session/genTokenWithDownload.js"
+    "gentokenwithdownload": "node session/genTokenWithDownload.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -42,5 +43,13 @@
     "vcf": "^2.1.1",
     "weather-js": "^2.0.0",
     "whatsapp-web.js": "^1.18.2"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }

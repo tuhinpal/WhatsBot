@@ -1,8 +1,8 @@
-version: '3.8'
+version: "3.8"
 
 services:
   app:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
       args:
@@ -22,7 +22,7 @@ services:
     # Uncomment the next line to use a non-root user for all processes.
     # user: node
 
-    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
   db:
@@ -33,9 +33,9 @@ services:
 
     # Uncomment to change startup options
     environment:
-     MONGO_INITDB_ROOT_USERNAME: tuhin
-     MONGO_INITDB_ROOT_PASSWORD: tuhin
-     MONGO_INITDB_DATABASE: firstDB
+      MONGO_INITDB_ROOT_USERNAME: tuhin
+      MONGO_INITDB_ROOT_PASSWORD: tuhin
+      MONGO_INITDB_DATABASE: firstDB
 
     # Add "forwardPorts": ["27017"] to **devcontainer.json** to forward MongoDB locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)

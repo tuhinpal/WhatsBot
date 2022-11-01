@@ -32,27 +32,51 @@ async function youtube(url) {
   }
 }
 
-const execute = async (client,msg,args) => {
+const execute = async (client, msg, args) => {
+  let data;
 
-    let data;
+  msg.delete(true);
 
-    msg.delete(true);
+  if (msg.hasQuotedMsg) {
+    let quotedMsg = await msg.getQuotedMessage();
+    data = await youtube(quotedMsg.body);
+  } else {
+    data = await youtube(args[0]);
+  }
 
-    if(msg.hasQuotedMsg) {
-        let quotedMsg = await msg.getQuotedMessage();
-        data = await youtube(quotedMsg.body);
-    }
-    else {
-        data = await youtube(args[0]);
-    }
-
-    if (data == "error") {
-        await client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened to fetch the YouTube video```");
-    } else {
-        await client.sendMessage(msg.to, new MessageMedia(data.image.mimetype, data.image.data, data.image.filename), { caption: `*${data.title}*\n\nViews: ` + "```" + data.views + "```\nLikes: " + "```" + data.likes + "```\nComments: " + "```" + data.comments + "```\n\n*Download Link* 👇\n" + "```" + data.download_link + "```" });
-    }
+  if (data == "error") {
+    await client.sendMessage(
+      msg.to,
+      `🙇‍♂️ *Error*\n\n` +
+        "```Something Unexpected Happened to fetch the YouTube video```"
+    );
+  } else {
+    await client.sendMessage(
+      msg.to,
+      new MessageMedia(
+        data.image.mimetype,
+        data.image.data,
+        data.image.filename
+      ),
+      {
+        caption:
+          `*${data.title}*\n\nViews: ` +
+          "```" +
+          data.views +
+          "```\nLikes: " +
+          "```" +
+          data.likes +
+          "```\nComments: " +
+          "```" +
+          data.comments +
+          "```\n\n*Download Link* 👇\n" +
+          "```" +
+          data.download_link +
+          "```",
+      }
+    );
+  }
 };
-
 
 module.exports = {
   name: "YouTube Download",

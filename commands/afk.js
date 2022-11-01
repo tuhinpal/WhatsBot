@@ -10,26 +10,27 @@ const formatTime = (time) =>
     timeZone: config.timezone,
   }).format(time);
 
-const afkOn = async (client, reason) => {
+const afkOn = async (client, chatid, reason) => {
   let data = await setAfk(reason);
   if (data?.afk) {
-    await logger(
-      client,
+    await client.sendMessage(
+      chatid,
       `You've already marked yourself offline at ${formatTime(
         data.time
       )}. If you want to set yourself back online, use *!afk off*`
     );
   } else if (data?.set) {
-    await logger(
-      client,
+    await client.sendMessage(
+      chatid,
       `You've marked yourself offline! To mark yourself back online use *!afk off*`
     );
+    await logger(client,`You've marked yourself offline at ${formatTime(Date.now())}`);
   } else {
-    await logger(client, `Some error occured.`);
+    await client.sendMessage(chatid, `Some error occured.`);
   }
 };
 
-const afkOff = async (client) => {
+const afkOff = async (client, chatid) => {
   let data = await setOnline();
   if (data) {
     let msg = `You're now back online. `;
@@ -38,23 +39,24 @@ const afkOff = async (client) => {
         (list, chat) => list + `${chat[0]} --> ${formatTime(chat[1])}\n`,
         ""
       )}`;
-    await logger(client, msg);
+    await client.sendMessage(chatid, msg);
+    await logger(client,`You came online at ${formatTime(Date.now())}`);
   } else {
-    await logger(client, `Your aren't afk.`);
+    await client.sendMessage(chatid, `Your aren't afk.`);
   }
 };
 
-const afkStatus = async (client) => {
+const afkStatus = async (client, chatid) => {
   const data = await getAFKData();
   if (data) {
-    await logger(
-      client,
+    await client.sendMessage(
+      chatid,
       `You've marked yourself offline at ${formatTime(data.time)}.\nReason: ${
         data.reason
       }\n\nIf you want to set yourself back online, use *!afk aff*`
     );
   } else {
-    await logger(client, `You're online.`);
+    await client.sendMessage(chatid, `You're online.`);
   }
 };
 
@@ -63,17 +65,20 @@ const execute = async (client, msg, args) => {
   let mode = args.shift();
   switch (mode) {
     case "on":
-      await afkOn(client, args.join(" "));
+      await afkOn(client, msg.to, args.join(" "));
       break;
     case "off":
-      await afkOff(client);
+      await afkOff(client, msg.to);
       break;
     case "status":
-      await afkStatus(client);
+      await afkStatus(client, msg.to);
       break;
     default:
-      await logger(client, `Invalid option provide. Please refer to help.`);
-      await logger(client, "!help afk");
+      await client.sendMessage(
+        msg.to,
+        `Invalid option provide. Please refer to help.`
+      );
+      await client.sendMessage(msg.to, "!help afk");
   }
 };
 
